@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      SAP SQL Anywhere 16                          */
-/* Created on:     4/17/2019 1:43:53 AM                         */
+/* Created on:     4/17/2019 2:06:03 AM                         */
 /*==============================================================*/
 
 
@@ -116,19 +116,23 @@ drop table if exists BIENES;
 
 drop index if exists CARGO.CARGO_AREA_FK;
 
+drop index if exists CARGO.CARGO_PK;
+
 drop table if exists CARGO;
 
 drop index if exists DETALLE_ORDEN.DETALLE_ORDEN_FK;
+
+drop index if exists DETALLE_ORDEN.DETALLE_ORDEN2_FK;
 
 drop index if exists DETALLE_ORDEN.DETALLE_ORDEN_PK;
 
 drop table if exists DETALLE_ORDEN;
 
-drop index if exists EMPLEADO.EMPLEADO_CARGO_FK;
+drop index if exists EMPLEADO.EMPLEADO_ESTADO_CIVIL_FK;
 
 drop index if exists EMPLEADO.EMPLEADO_SEXO_FK;
 
-drop index if exists EMPLEADO.EMPLEADO_ESTADO_CIVIL_FK;
+drop index if exists EMPLEADO.EMPLEADO_CARGO_FK;
 
 drop index if exists EMPLEADO.EMPLEADO_PK;
 
@@ -146,6 +150,8 @@ drop index if exists ITEM_ENTRADA.ITEM_ENTRADA_ENTRADA_FK;
 
 drop index if exists ITEM_ENTRADA.BIENES_ITEM_ENTRADA_ALMACEN_FK;
 
+drop index if exists ITEM_ENTRADA.ITEM_ENTRADA_PK;
+
 drop table if exists ITEM_ENTRADA;
 
 drop index if exists ITEM_SALIDA.ITEM_SALIDA_EMPLEADO_FK;
@@ -154,11 +160,15 @@ drop index if exists ITEM_SALIDA.BIENES_ITEM_SALIDA_FK;
 
 drop index if exists ITEM_SALIDA.SALIDA_ALMACEN_ITEM_SALIDA_FK;
 
+drop index if exists ITEM_SALIDA.ITEM_SALIDA_PK;
+
 drop table if exists ITEM_SALIDA;
 
 drop index if exists ITEM_SOLICITUD.BIENES_ITEM_SOLICITUD_FK;
 
 drop index if exists ITEM_SOLICITUD.SOLICITUD_COMPRA_ITEM_SOLICITUD_FK;
+
+drop index if exists ITEM_SOLICITUD.ITEM_SOLICITUD_PK;
 
 drop table if exists ITEM_SOLICITUD;
 
@@ -254,9 +264,16 @@ create table CARGO
 (
    CAR_ID               integer                        not null,
    ARE_ID               integer                        not null,
-   CAR_NOMBRE           varchar(100)                   null,
-   CAR_DETALLES         varchar(500)                   null,
+   CAR_NOMBRE           varchar(100)                   not null,
+   CAR_DETALLES         varchar(500)                   not null,
    constraint PK_CARGO primary key clustered (CAR_ID)
+);
+
+/*==============================================================*/
+/* Index: CARGO_PK                                              */
+/*==============================================================*/
+create unique clustered index CARGO_PK on CARGO (
+CAR_ID ASC
 );
 
 /*==============================================================*/
@@ -271,19 +288,26 @@ ARE_ID ASC
 /*==============================================================*/
 create table DETALLE_ORDEN 
 (
-   ORD_NUMERO           integer                        not null,
    SOL_NUMERO           integer                        not null,
    BIEN_ID              integer                        not null,
-   constraint PK_DETALLE_ORDEN primary key clustered (ORD_NUMERO, SOL_NUMERO, BIEN_ID)
+   ORD_NUMERO           integer                        not null,
+   constraint PK_DETALLE_ORDEN primary key clustered (SOL_NUMERO, BIEN_ID, ORD_NUMERO)
 );
 
 /*==============================================================*/
 /* Index: DETALLE_ORDEN_PK                                      */
 /*==============================================================*/
 create unique clustered index DETALLE_ORDEN_PK on DETALLE_ORDEN (
-ORD_NUMERO ASC,
 SOL_NUMERO ASC,
-BIEN_ID ASC
+BIEN_ID ASC,
+ORD_NUMERO ASC
+);
+
+/*==============================================================*/
+/* Index: DETALLE_ORDEN2_FK                                     */
+/*==============================================================*/
+create index DETALLE_ORDEN2_FK on DETALLE_ORDEN (
+ORD_NUMERO ASC
 );
 
 /*==============================================================*/
@@ -300,9 +324,9 @@ BIEN_ID ASC
 create table EMPLEADO 
 (
    EMP_ID               integer                        not null,
+   CAR_ID               integer                        not null,
    SEX_ID               integer                        not null,
    EST_ID               integer                        not null,
-   CAR_ID               integer                        null,
    EMP_CEDULA           integer                        null,
    EMP_NOMBRE           varchar(100)                   null,
    EMP_TELEFONO         varchar(10)                    null,
@@ -317,10 +341,10 @@ EMP_ID ASC
 );
 
 /*==============================================================*/
-/* Index: EMPLEADO_ESTADO_CIVIL_FK                              */
+/* Index: EMPLEADO_CARGO_FK                                     */
 /*==============================================================*/
-create index EMPLEADO_ESTADO_CIVIL_FK on EMPLEADO (
-EST_ID ASC
+create index EMPLEADO_CARGO_FK on EMPLEADO (
+CAR_ID ASC
 );
 
 /*==============================================================*/
@@ -331,10 +355,10 @@ SEX_ID ASC
 );
 
 /*==============================================================*/
-/* Index: EMPLEADO_CARGO_FK                                     */
+/* Index: EMPLEADO_ESTADO_CIVIL_FK                              */
 /*==============================================================*/
-create index EMPLEADO_CARGO_FK on EMPLEADO (
-CAR_ID ASC
+create index EMPLEADO_ESTADO_CIVIL_FK on EMPLEADO (
+EST_ID ASC
 );
 
 /*==============================================================*/
@@ -386,6 +410,14 @@ create table ITEM_ENTRADA
 );
 
 /*==============================================================*/
+/* Index: ITEM_ENTRADA_PK                                       */
+/*==============================================================*/
+create unique clustered index ITEM_ENTRADA_PK on ITEM_ENTRADA (
+BIEN_ID ASC,
+ENT_NUMERO ASC
+);
+
+/*==============================================================*/
 /* Index: BIENES_ITEM_ENTRADA_ALMACEN_FK                        */
 /*==============================================================*/
 create index BIENES_ITEM_ENTRADA_ALMACEN_FK on ITEM_ENTRADA (
@@ -409,6 +441,15 @@ create table ITEM_SALIDA
    EMP_ID               integer                        not null,
    ITESA_CANTIDADENTREGADA integer                        null,
    constraint PK_ITEM_SALIDA primary key clustered (SAL_NUMERO, BIEN_ID, EMP_ID)
+);
+
+/*==============================================================*/
+/* Index: ITEM_SALIDA_PK                                        */
+/*==============================================================*/
+create unique clustered index ITEM_SALIDA_PK on ITEM_SALIDA (
+SAL_NUMERO ASC,
+BIEN_ID ASC,
+EMP_ID ASC
 );
 
 /*==============================================================*/
@@ -443,6 +484,14 @@ create table ITEM_SOLICITUD
    ITES_CANTIDADDESPACHADA integer                        null,
    ITES_VALORTOTAL      float                          null,
    constraint PK_ITEM_SOLICITUD primary key clustered (SOL_NUMERO, BIEN_ID)
+);
+
+/*==============================================================*/
+/* Index: ITEM_SOLICITUD_PK                                     */
+/*==============================================================*/
+create unique clustered index ITEM_SOLICITUD_PK on ITEM_SOLICITUD (
+SOL_NUMERO ASC,
+BIEN_ID ASC
 );
 
 /*==============================================================*/
