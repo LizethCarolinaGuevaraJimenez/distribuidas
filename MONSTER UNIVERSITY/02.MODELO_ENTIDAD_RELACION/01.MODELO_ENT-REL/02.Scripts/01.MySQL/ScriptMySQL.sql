@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     4/18/2019 6:54:39 PM                         */
+/* Created on:     4/20/2019 1:22:14 AM                         */
 /*==============================================================*/
 
 
@@ -37,6 +37,24 @@ drop table if exists PEEMP_EMPLEADO;
 drop table if exists PEEST_ESTCIV;
 
 drop table if exists PESEX_SEXO;
+
+drop table if exists SEEST_ESTADO;
+
+drop table if exists SEOPC_OPCION;
+
+drop table if exists SEOPC_OPCPER;
+
+drop table if exists SEPER_PERFIL;
+
+drop table if exists SEROL_ROL;
+
+drop table if exists SESIS_SISTEM;
+
+drop table if exists SEUSU_USAPER;
+
+drop table if exists SEUSU_USUARI;
+
+drop table if exists SEVEN_VENTAN;
 
 /*==============================================================*/
 /* Table: AEENT_ENTALM                                          */
@@ -232,7 +250,6 @@ create table PEEMP_EMPLEADO
 create table PEEST_ESTCIV
 (
    EST_ID               int not null,
-   EST_DESCRIPCION      varchar(30) not null,
    primary key (EST_ID)
 );
 
@@ -246,63 +263,216 @@ create table PESEX_SEXO
    primary key (SEX_ID)
 );
 
+/*==============================================================*/
+/* Table: SEEST_ESTADO                                          */
+/*==============================================================*/
+create table SEEST_ESTADO
+(
+   EST_CODIGO           char(10) not null,
+   primary key (EST_CODIGO)
+);
+
+alter table SEEST_ESTADO comment 'Entidad de estado, modelo lógico de seguridades.';
+
+/*==============================================================*/
+/* Table: SEOPC_OPCION                                          */
+/*==============================================================*/
+create table SEOPC_OPCION
+(
+   OPC_CODIGO           char(10) not null,
+   SIS_CODIGO           char(10) not null,
+   OPC_DESCRIPCION      varchar(100) not null,
+   primary key (OPC_CODIGO)
+);
+
+alter table SEOPC_OPCION comment 'Entidad de opción, modelo lógico de seguridades.';
+
+/*==============================================================*/
+/* Table: SEOPC_OPCPER                                          */
+/*==============================================================*/
+create table SEOPC_OPCPER
+(
+   PER_CODIGO           char(10) not null,
+   OPC_CODIGO           char(10) not null,
+   OPCPER_FECHAASIGNACION datetime not null,
+   OPCPER_ESTADO        varchar(50) not null,
+   primary key (PER_CODIGO, OPC_CODIGO)
+);
+
+alter table SEOPC_OPCPER comment 'Entidad de opciones por perfil, modelo lógico de seguridades';
+
+/*==============================================================*/
+/* Table: SEPER_PERFIL                                          */
+/*==============================================================*/
+create table SEPER_PERFIL
+(
+   PER_CODIGO           char(10) not null,
+   PER_DESCRIPCION      varchar(100) not null,
+   PER_OBSERVACION      varchar(100) not null,
+   primary key (PER_CODIGO)
+);
+
+alter table SEPER_PERFIL comment 'Entidad de perfil, modelo lógico de seguridades.';
+
+/*==============================================================*/
+/* Table: SEROL_ROL                                             */
+/*==============================================================*/
+create table SEROL_ROL
+(
+   PER_CODIGO           char(10) not null,
+   ROL_INSERCION        char(5) not null,
+   ROL_ACTUALIZACION    char(5) not null,
+   ROL_ELIMINACION      char(5) not null,
+   ROL_CONSULTA         char(5) not null,
+   primary key (PER_CODIGO)
+);
+
+alter table SEROL_ROL comment 'Entidad de rol, modelo lógico de seguridades.';
+
+/*==============================================================*/
+/* Table: SESIS_SISTEM                                          */
+/*==============================================================*/
+create table SESIS_SISTEM
+(
+   SIS_CODIGO           char(10) not null,
+   EST_CODIGO           char(10) not null,
+   SIS_DESCRIPCION      varchar(100) not null,
+   primary key (SIS_CODIGO)
+);
+
+alter table SESIS_SISTEM comment 'Entidad de sistema, modelo lógico de seguridades.';
+
+/*==============================================================*/
+/* Table: SEUSU_USAPER                                          */
+/*==============================================================*/
+create table SEUSU_USAPER
+(
+   EMP_ID               int not null,
+   PER_CODIGO           char(10) not null,
+   USUPER_FECHAASIGNACION date not null,
+   USUPER_FECHACAMBIO   date not null,
+   primary key (EMP_ID, PER_CODIGO)
+);
+
+alter table SEUSU_USAPER comment 'Entidad de usuario por perfil, modelo lógico de seguridades.';
+
+/*==============================================================*/
+/* Table: SEUSU_USUARI                                          */
+/*==============================================================*/
+create table SEUSU_USUARI
+(
+   EMP_ID               int not null,
+   EST_CODIGO           char(10) not null,
+   USU_CONTRASENA       varchar(200) not null,
+   USU_PIEFIRMA         varchar(100) not null,
+   USU_FECHACREACION    datetime not null,
+   USU_FECHAULTIMOCAMBIO datetime not null,
+   primary key (EMP_ID)
+);
+
+alter table SEUSU_USUARI comment 'Entidad de usuario, modelo lógico de seguridades.';
+
+/*==============================================================*/
+/* Table: SEVEN_VENTAN                                          */
+/*==============================================================*/
+create table SEVEN_VENTAN
+(
+   VEN_CODIGO           char(10) not null,
+   OPC_CODIGO           char(10) not null,
+   VEN_DESCRIPCION      varchar(100) not null,
+   VEN_MENSAJE          varchar(100) not null,
+   primary key (VEN_CODIGO)
+);
+
+alter table SEVEN_VENTAN comment 'Entidad de ventana, modelo lógico de seguridades.';
+
 alter table AEITE_ITEENT add constraint FK_BIENES_ITEM_ENTRADA_ALMACEN foreign key (BIEN_ID)
-      references MEBIE_BIENES (BIEN_ID);
+      references MEBIE_BIENES (BIEN_ID) on delete restrict on update restrict;
 
 alter table AEITE_ITEENT add constraint FK_ITEM_ENTRADA_ENTRADA foreign key (ENT_NUMERO)
-      references AEENT_ENTALM (ENT_NUMERO);
+      references AEENT_ENTALM (ENT_NUMERO) on delete restrict on update restrict;
 
 alter table AEITE_ITESAL add constraint FK_BIENES_ITEM_SALIDA foreign key (BIEN_ID)
-      references MEBIE_BIENES (BIEN_ID);
+      references MEBIE_BIENES (BIEN_ID) on delete restrict on update restrict;
 
 alter table AEITE_ITESAL add constraint FK_ITEM_SALIDA_EMPLEADO foreign key (EMP_ID)
-      references PEEMP_EMPLEADO (EMP_ID);
+      references PEEMP_EMPLEADO (EMP_ID) on delete restrict on update restrict;
 
 alter table AEITE_ITESAL add constraint FK_SALIDA_ALMACEN_ITEM_SALIDA foreign key (SAL_NUMERO)
-      references AESAL_SALALM (SAL_NUMERO);
+      references AESAL_SALALM (SAL_NUMERO) on delete restrict on update restrict;
 
 alter table AESAL_SALALM add constraint FK_SALIDA_EMPLEADO foreign key (EMP_ID)
-      references PEEMP_EMPLEADO (EMP_ID);
+      references PEEMP_EMPLEADO (EMP_ID) on delete restrict on update restrict;
 
 alter table AESTO_STOCK add constraint FK_BIENES_STOCK foreign key (BIEN_ID)
-      references MEBIE_BIENES (BIEN_ID);
+      references MEBIE_BIENES (BIEN_ID) on delete restrict on update restrict;
 
 alter table CEITE_ITESOL add constraint FK_BIENES_ITEM_SOLICITUD foreign key (BIEN_ID)
-      references MEBIE_BIENES (BIEN_ID);
+      references MEBIE_BIENES (BIEN_ID) on delete restrict on update restrict;
 
 alter table CEITE_ITESOL add constraint FK_SOLICITUD_COMPRA_ITEM_SOLICITUD foreign key (SOL_NUMERO)
-      references CESOL_SOLCOM (SOL_NUMERO);
+      references CESOL_SOLCOM (SOL_NUMERO) on delete restrict on update restrict;
 
 alter table CEORD_ORDCON add constraint FK_ORDEN_PROVEEDOR foreign key (PRO_ID)
-      references AEPRO_PROVEEDOR (PRO_ID);
+      references AEPRO_PROVEEDOR (PRO_ID) on delete restrict on update restrict;
 
 alter table CESOL_SOLCOM add constraint FK_SOLICITUD_COMPRA_AREA foreign key (ARE_ID)
-      references PEARE_AREA (ARE_ID);
+      references PEARE_AREA (ARE_ID) on delete restrict on update restrict;
 
 alter table CESOL_SOLCOM add constraint FK_SOLICITUD_COMPRA_EMPLEADO foreign key (EMP_ID)
-      references PEEMP_EMPLEADO (EMP_ID);
+      references PEEMP_EMPLEADO (EMP_ID) on delete restrict on update restrict;
 
 alter table CESOL_SOLCOM add constraint FK_SOLICITUD_COMPRA_RUBRO_PRESUPUESTARIO foreign key (RUB_CODIGO)
-      references CERUB_RUBPRE (RUB_CODIGO);
+      references CERUB_RUBPRE (RUB_CODIGO) on delete restrict on update restrict;
 
 alter table MEBIE_BIENES add constraint FK_PROVEEDOR_BIENES foreign key (PRO_ID)
-      references AEPRO_PROVEEDOR (PRO_ID);
+      references AEPRO_PROVEEDOR (PRO_ID) on delete restrict on update restrict;
 
 alter table MEDET_DETORD add constraint FK_DETALLE_ORDEN foreign key (SOL_NUMERO, BIEN_ID)
-      references CEITE_ITESOL (SOL_NUMERO, BIEN_ID);
+      references CEITE_ITESOL (SOL_NUMERO, BIEN_ID) on delete restrict on update restrict;
 
 alter table MEDET_DETORD add constraint FK_DETALLE_ORDEN2 foreign key (ORD_NUMERO)
-      references CEORD_ORDCON (ORD_NUMERO);
+      references CEORD_ORDCON (ORD_NUMERO) on delete restrict on update restrict;
 
 alter table PECAR_CARGO add constraint FK_CARGO_AREA foreign key (ARE_ID)
-      references PEARE_AREA (ARE_ID);
+      references PEARE_AREA (ARE_ID) on delete restrict on update restrict;
 
 alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_CARGO foreign key (CAR_ID)
-      references PECAR_CARGO (CAR_ID);
+      references PECAR_CARGO (CAR_ID) on delete restrict on update restrict;
 
 alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_ESTADO_CIVIL foreign key (EST_ID)
-      references PEEST_ESTCIV (EST_ID);
+      references PEEST_ESTCIV (EST_ID) on delete restrict on update restrict;
 
 alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_SEXO foreign key (SEX_ID)
-      references PESEX_SEXO (SEX_ID);
+      references PESEX_SEXO (SEX_ID) on delete restrict on update restrict;
+
+alter table SEOPC_OPCION add constraint FK_XR_XESIS_XEOPC foreign key (SIS_CODIGO)
+      references SESIS_SISTEM (SIS_CODIGO) on delete restrict on update restrict;
+
+alter table SEOPC_OPCPER add constraint FK_SEOPC_OPCPER foreign key (OPC_CODIGO)
+      references SEOPC_OPCION (OPC_CODIGO) on delete restrict on update restrict;
+
+alter table SEOPC_OPCPER add constraint FK_SEOPC_OPCPER2 foreign key (PER_CODIGO)
+      references SEPER_PERFIL (PER_CODIGO) on delete restrict on update restrict;
+
+alter table SEROL_ROL add constraint FK_XR_XEPER_XEROL foreign key (PER_CODIGO)
+      references SEPER_PERFIL (PER_CODIGO) on delete restrict on update restrict;
+
+alter table SESIS_SISTEM add constraint FK_XR_XEEST_XESIS foreign key (EST_CODIGO)
+      references SEEST_ESTADO (EST_CODIGO) on delete restrict on update restrict;
+
+alter table SEUSU_USAPER add constraint FK_SEUSU_USAPER foreign key (PER_CODIGO)
+      references SEPER_PERFIL (PER_CODIGO) on delete restrict on update restrict;
+
+alter table SEUSU_USAPER add constraint FK_SEUSU_USAPER2 foreign key (EMP_ID)
+      references SEUSU_USUARI (EMP_ID) on delete restrict on update restrict;
+
+alter table SEUSU_USUARI add constraint FK_XE_PEEMP_XEUSU foreign key (EMP_ID)
+      references PEEMP_EMPLEADO (EMP_ID) on delete restrict on update restrict;
+
+alter table SEUSU_USUARI add constraint FK_XR_XEEST_XEUSU foreign key (EST_CODIGO)
+      references SEEST_ESTADO (EST_CODIGO) on delete restrict on update restrict;
+
+alter table SEVEN_VENTAN add constraint FK_XR_XEOPC_XEVEN foreign key (OPC_CODIGO)
+      references SEOPC_OPCION (OPC_CODIGO) on delete restrict on update restrict;
 

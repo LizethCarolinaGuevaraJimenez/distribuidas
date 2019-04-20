@@ -1,14 +1,14 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     4/18/2019 5:04:48 PM                         */
+/* Created on:     4/20/2019 1:24:47 AM                         */
 /*==============================================================*/
 
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('AEITE_ITEENT') and o.name = 'FK_AEITE_ITE_BIENES_IT_MEBIE_BI')
+   where r.fkeyid = object_id('AEITE_ITEENT') and o.name = 'FK_AEITE_ITE_BIENES_ITE_MEBIE_BI')
 alter table AEITE_ITEENT
-   drop constraint FK_AEITE_ITE_BIENES_IT_MEBIE_BI
+   drop constraint FK_AEITE_ITE_BIENES_ITE_MEBIE_BI
 go
 
 if exists (select 1
@@ -20,9 +20,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('AEITE_ITESAL') and o.name = 'FK_AEITE_ITS_BIENES_IT_MEBIE_BI')
+   where r.fkeyid = object_id('AEITE_ITESAL') and o.name = 'FK_AEITE_ITS_BIENES_ITS_MEBIE_BI')
 alter table AEITE_ITESAL
-   drop constraint FK_AEITE_ITS_BIENES_IT_MEBIE_BI
+   drop constraint FK_AEITE_ITS_BIENES_ITS_MEBIE_BI
 go
 
 if exists (select 1
@@ -142,6 +142,76 @@ if exists (select 1
    where r.fkeyid = object_id('PEEMP_EMPLEADO') and o.name = 'FK_PEEMP_EM_EMPLEADO__PESEX_SE')
 alter table PEEMP_EMPLEADO
    drop constraint FK_PEEMP_EM_EMPLEADO__PESEX_SE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEOPC_OPCION') and o.name = 'FK_SEOPC_OP_XR_XESIS__SESIS_SI')
+alter table SEOPC_OPCION
+   drop constraint FK_SEOPC_OP_XR_XESIS__SESIS_SI
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEOPC_OPCPER') and o.name = 'FK_SEOPC_OP_SEOPC_OPC_SEOPC_OP')
+alter table SEOPC_OPCPER
+   drop constraint FK_SEOPC_OP_SEOPC_OPC_SEOPC_OP
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEOPC_OPCPER') and o.name = 'FK_SEOPC_OP_SEOPC_OPC_SEPER_PE')
+alter table SEOPC_OPCPER
+   drop constraint FK_SEOPC_OP_SEOPC_OPC_SEPER_PE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEROL_ROL') and o.name = 'FK_SEROL_RO_XR_XEPER__SEPER_PE')
+alter table SEROL_ROL
+   drop constraint FK_SEROL_RO_XR_XEPER__SEPER_PE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SESIS_SISTEM') and o.name = 'FK_SESIS_SI_XR_XEEST__SEEST_ES')
+alter table SESIS_SISTEM
+   drop constraint FK_SESIS_SI_XR_XEEST__SEEST_ES
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEUSU_USAPER') and o.name = 'FK_SEUSU_US_SEUSU_USA_SEPER_PE')
+alter table SEUSU_USAPER
+   drop constraint FK_SEUSU_US_SEUSU_USA_SEPER_PE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEUSU_USAPER') and o.name = 'FK_SEUSU_US_SEUSU_USA_SEUSU_US')
+alter table SEUSU_USAPER
+   drop constraint FK_SEUSU_US_SEUSU_USA_SEUSU_US
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEUSU_USUARI') and o.name = 'FK_SEUSU_US_XE_PEEMP__PEEMP_EM')
+alter table SEUSU_USUARI
+   drop constraint FK_SEUSU_US_XE_PEEMP__PEEMP_EM
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEUSU_USUARI') and o.name = 'FK_SEUSU_US_XR_XEEST__SEEST_ES')
+alter table SEUSU_USUARI
+   drop constraint FK_SEUSU_US_XR_XEEST__SEEST_ES
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SEVEN_VENTAN') and o.name = 'FK_SEVEN_VE_XR_XEOPC__SEOPC_OP')
+alter table SEVEN_VENTAN
+   drop constraint FK_SEVEN_VE_XR_XEOPC__SEOPC_OP
 go
 
 if exists (select 1
@@ -441,6 +511,141 @@ if exists (select 1
            where  id = object_id('PESEX_SEXO')
             and   type = 'U')
    drop table PESEX_SEXO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SEEST_ESTADO')
+            and   type = 'U')
+   drop table SEEST_ESTADO
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SEOPC_OPCION')
+            and   name  = 'XR_XESIS_XEOPC_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SEOPC_OPCION.XR_XESIS_XEOPC_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SEOPC_OPCION')
+            and   type = 'U')
+   drop table SEOPC_OPCION
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SEOPC_OPCPER')
+            and   name  = 'SEOPC_OPCPER_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SEOPC_OPCPER.SEOPC_OPCPER_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SEOPC_OPCPER')
+            and   name  = 'SEOPC_OPCPER2_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SEOPC_OPCPER.SEOPC_OPCPER2_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SEOPC_OPCPER')
+            and   type = 'U')
+   drop table SEOPC_OPCPER
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SEPER_PERFIL')
+            and   type = 'U')
+   drop table SEPER_PERFIL
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SEROL_ROL')
+            and   type = 'U')
+   drop table SEROL_ROL
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SESIS_SISTEM')
+            and   name  = 'XR_XEEST_XESIS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SESIS_SISTEM.XR_XEEST_XESIS_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SESIS_SISTEM')
+            and   type = 'U')
+   drop table SESIS_SISTEM
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SEUSU_USAPER')
+            and   name  = 'SEUSU_USAPER_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SEUSU_USAPER.SEUSU_USAPER_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SEUSU_USAPER')
+            and   name  = 'SEUSU_USAPER2_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SEUSU_USAPER.SEUSU_USAPER2_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SEUSU_USAPER')
+            and   type = 'U')
+   drop table SEUSU_USAPER
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SEUSU_USUARI')
+            and   name  = 'XR_XEEST_XEUSU_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SEUSU_USUARI.XR_XEEST_XEUSU_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SEUSU_USUARI')
+            and   type = 'U')
+   drop table SEUSU_USUARI
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SEVEN_VENTAN')
+            and   name  = 'XR_XEOPC_XEVEN_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SEVEN_VENTAN.XR_XEOPC_XEVEN_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SEVEN_VENTAN')
+            and   type = 'U')
+   drop table SEVEN_VENTAN
 go
 
 /*==============================================================*/
@@ -837,7 +1042,6 @@ go
 /*==============================================================*/
 create table PEEST_ESTCIV (
    EST_ID               int                  not null,
-   EST_DESCRIPCION      varchar(30)          not null,
    constraint PK_PEEST_ESTCIV primary key (EST_ID)
 )
 go
@@ -852,8 +1056,346 @@ create table PESEX_SEXO (
 )
 go
 
+/*==============================================================*/
+/* Table: SEEST_ESTADO                                          */
+/*==============================================================*/
+create table SEEST_ESTADO (
+   EST_CODIGO           char(10)             not null,
+   constraint PK_SEEST_ESTADO primary key (EST_CODIGO)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SEEST_ESTADO') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SEEST_ESTADO' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de estado, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SEEST_ESTADO'
+go
+
+/*==============================================================*/
+/* Table: SEOPC_OPCION                                          */
+/*==============================================================*/
+create table SEOPC_OPCION (
+   OPC_CODIGO           char(10)             not null,
+   SIS_CODIGO           char(10)             not null,
+   OPC_DESCRIPCION      varchar(100)         not null,
+   constraint PK_SEOPC_OPCION primary key (OPC_CODIGO)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SEOPC_OPCION') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SEOPC_OPCION' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de opción, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SEOPC_OPCION'
+go
+
+/*==============================================================*/
+/* Index: XR_XESIS_XEOPC_FK                                     */
+/*==============================================================*/
+
+
+
+
+create nonclustered index XR_XESIS_XEOPC_FK on SEOPC_OPCION (SIS_CODIGO ASC)
+go
+
+/*==============================================================*/
+/* Table: SEOPC_OPCPER                                          */
+/*==============================================================*/
+create table SEOPC_OPCPER (
+   PER_CODIGO           char(10)             not null,
+   OPC_CODIGO           char(10)             not null,
+   OPCPER_FECHAASIGNACION datetime             not null,
+   OPCPER_ESTADO        varchar(50)          not null,
+   constraint PK_SEOPC_OPCPER primary key (PER_CODIGO, OPC_CODIGO)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SEOPC_OPCPER') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SEOPC_OPCPER' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de opciones por perfil, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SEOPC_OPCPER'
+go
+
+/*==============================================================*/
+/* Index: SEOPC_OPCPER2_FK                                      */
+/*==============================================================*/
+
+
+
+
+create nonclustered index SEOPC_OPCPER2_FK on SEOPC_OPCPER (PER_CODIGO ASC)
+go
+
+/*==============================================================*/
+/* Index: SEOPC_OPCPER_FK                                       */
+/*==============================================================*/
+
+
+
+
+create nonclustered index SEOPC_OPCPER_FK on SEOPC_OPCPER (OPC_CODIGO ASC)
+go
+
+/*==============================================================*/
+/* Table: SEPER_PERFIL                                          */
+/*==============================================================*/
+create table SEPER_PERFIL (
+   PER_CODIGO           char(10)             not null,
+   PER_DESCRIPCION      varchar(100)         not null,
+   PER_OBSERVACION      varchar(100)         not null,
+   constraint PK_SEPER_PERFIL primary key (PER_CODIGO)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SEPER_PERFIL') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SEPER_PERFIL' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de perfil, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SEPER_PERFIL'
+go
+
+/*==============================================================*/
+/* Table: SEROL_ROL                                             */
+/*==============================================================*/
+create table SEROL_ROL (
+   PER_CODIGO           char(10)             not null,
+   ROL_INSERCION        char(5)              not null,
+   ROL_ACTUALIZACION    char(5)              not null,
+   ROL_ELIMINACION      char(5)              not null,
+   ROL_CONSULTA         char(5)              not null,
+   constraint PK_SEROL_ROL primary key (PER_CODIGO)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SEROL_ROL') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SEROL_ROL' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de rol, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SEROL_ROL'
+go
+
+/*==============================================================*/
+/* Table: SESIS_SISTEM                                          */
+/*==============================================================*/
+create table SESIS_SISTEM (
+   SIS_CODIGO           char(10)             not null,
+   EST_CODIGO           char(10)             not null,
+   SIS_DESCRIPCION      varchar(100)         not null,
+   constraint PK_SESIS_SISTEM primary key (SIS_CODIGO)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SESIS_SISTEM') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SESIS_SISTEM' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de sistema, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SESIS_SISTEM'
+go
+
+/*==============================================================*/
+/* Index: XR_XEEST_XESIS_FK                                     */
+/*==============================================================*/
+
+
+
+
+create nonclustered index XR_XEEST_XESIS_FK on SESIS_SISTEM (EST_CODIGO ASC)
+go
+
+/*==============================================================*/
+/* Table: SEUSU_USAPER                                          */
+/*==============================================================*/
+create table SEUSU_USAPER (
+   EMP_ID               int                  not null,
+   PER_CODIGO           char(10)             not null,
+   USUPER_FECHAASIGNACION datetime             not null,
+   USUPER_FECHACAMBIO   datetime             not null,
+   constraint PK_SEUSU_USAPER primary key (EMP_ID, PER_CODIGO)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SEUSU_USAPER') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SEUSU_USAPER' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de usuario por perfil, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SEUSU_USAPER'
+go
+
+/*==============================================================*/
+/* Index: SEUSU_USAPER2_FK                                      */
+/*==============================================================*/
+
+
+
+
+create nonclustered index SEUSU_USAPER2_FK on SEUSU_USAPER (EMP_ID ASC)
+go
+
+/*==============================================================*/
+/* Index: SEUSU_USAPER_FK                                       */
+/*==============================================================*/
+
+
+
+
+create nonclustered index SEUSU_USAPER_FK on SEUSU_USAPER (PER_CODIGO ASC)
+go
+
+/*==============================================================*/
+/* Table: SEUSU_USUARI                                          */
+/*==============================================================*/
+create table SEUSU_USUARI (
+   EMP_ID               int                  not null,
+   EST_CODIGO           char(10)             not null,
+   USU_CONTRASENA       varchar(200)         not null,
+   USU_PIEFIRMA         varchar(100)         not null,
+   USU_FECHACREACION    datetime             not null,
+   USU_FECHAULTIMOCAMBIO datetime             not null,
+   constraint PK_SEUSU_USUARI primary key (EMP_ID)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SEUSU_USUARI') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SEUSU_USUARI' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de usuario, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SEUSU_USUARI'
+go
+
+/*==============================================================*/
+/* Index: XR_XEEST_XEUSU_FK                                     */
+/*==============================================================*/
+
+
+
+
+create nonclustered index XR_XEEST_XEUSU_FK on SEUSU_USUARI (EST_CODIGO ASC)
+go
+
+/*==============================================================*/
+/* Table: SEVEN_VENTAN                                          */
+/*==============================================================*/
+create table SEVEN_VENTAN (
+   VEN_CODIGO           char(10)             not null,
+   OPC_CODIGO           char(10)             not null,
+   VEN_DESCRIPCION      varchar(100)         not null,
+   VEN_MENSAJE          varchar(100)         not null,
+   constraint PK_SEVEN_VENTAN primary key (VEN_CODIGO)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('SEVEN_VENTAN') and minor_id = 0)
+begin 
+   declare @CurrentUser sysname 
+select @CurrentUser = user_name() 
+execute sp_dropextendedproperty 'MS_Description',  
+   'user', @CurrentUser, 'table', 'SEVEN_VENTAN' 
+ 
+end 
+
+
+select @CurrentUser = user_name() 
+execute sp_addextendedproperty 'MS_Description',  
+   'Entidad de ventana, modelo lógico de seguridades.', 
+   'user', @CurrentUser, 'table', 'SEVEN_VENTAN'
+go
+
+/*==============================================================*/
+/* Index: XR_XEOPC_XEVEN_FK                                     */
+/*==============================================================*/
+
+
+
+
+create nonclustered index XR_XEOPC_XEVEN_FK on SEVEN_VENTAN (OPC_CODIGO ASC)
+go
+
 alter table AEITE_ITEENT
-   add constraint FK_AEITE_ITE_BIENES_IT_MEBIE_BI foreign key (BIEN_ID)
+   add constraint FK_AEITE_ITE_BIENES_ITE_MEBIE_BI foreign key (BIEN_ID)
       references MEBIE_BIENES (BIEN_ID)
 go
 
@@ -863,7 +1405,7 @@ alter table AEITE_ITEENT
 go
 
 alter table AEITE_ITESAL
-   add constraint FK_AEITE_ITS_BIENES_IT_MEBIE_BI foreign key (BIEN_ID)
+   add constraint FK_AEITE_ITS_BIENES_ITS_MEBIE_BI foreign key (BIEN_ID)
       references MEBIE_BIENES (BIEN_ID)
 go
 
@@ -950,5 +1492,55 @@ go
 alter table PEEMP_EMPLEADO
    add constraint FK_PEEMP_EM_EMPLEADO__PESEX_SE foreign key (SEX_ID)
       references PESEX_SEXO (SEX_ID)
+go
+
+alter table SEOPC_OPCION
+   add constraint FK_SEOPC_OP_XR_XESIS__SESIS_SI foreign key (SIS_CODIGO)
+      references SESIS_SISTEM (SIS_CODIGO)
+go
+
+alter table SEOPC_OPCPER
+   add constraint FK_SEOPC_OP_SEOPC_OPC_SEOPC_OP foreign key (OPC_CODIGO)
+      references SEOPC_OPCION (OPC_CODIGO)
+go
+
+alter table SEOPC_OPCPER
+   add constraint FK_SEOPC_OP_SEOPC_OPC_SEPER_PE foreign key (PER_CODIGO)
+      references SEPER_PERFIL (PER_CODIGO)
+go
+
+alter table SEROL_ROL
+   add constraint FK_SEROL_RO_XR_XEPER__SEPER_PE foreign key (PER_CODIGO)
+      references SEPER_PERFIL (PER_CODIGO)
+go
+
+alter table SESIS_SISTEM
+   add constraint FK_SESIS_SI_XR_XEEST__SEEST_ES foreign key (EST_CODIGO)
+      references SEEST_ESTADO (EST_CODIGO)
+go
+
+alter table SEUSU_USAPER
+   add constraint FK_SEUSU_US_SEUSU_USA_SEPER_PE foreign key (PER_CODIGO)
+      references SEPER_PERFIL (PER_CODIGO)
+go
+
+alter table SEUSU_USAPER
+   add constraint FK_SEUSU_US_SEUSU_USA_SEUSU_US foreign key (EMP_ID)
+      references SEUSU_USUARI (EMP_ID)
+go
+
+alter table SEUSU_USUARI
+   add constraint FK_SEUSU_US_XE_PEEMP__PEEMP_EM foreign key (EMP_ID)
+      references PEEMP_EMPLEADO (EMP_ID)
+go
+
+alter table SEUSU_USUARI
+   add constraint FK_SEUSU_US_XR_XEEST__SEEST_ES foreign key (EST_CODIGO)
+      references SEEST_ESTADO (EST_CODIGO)
+go
+
+alter table SEVEN_VENTAN
+   add constraint FK_SEVEN_VE_XR_XEOPC__SEOPC_OP foreign key (OPC_CODIGO)
+      references SEOPC_OPCION (OPC_CODIGO)
 go
 

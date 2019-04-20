@@ -4,13 +4,9 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{A6241059-19C1-41F4-B990-FCACF327AEFB}" Loaded="No" Name="Monster University" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Monster University.cdm"/>
-		<Model Expanded="Yes" ID="{2BBB2D1D-704D-4D3D-9B19-916F75363789}" Loaded="No" Name="Monster University" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="Monster University.ldm"/>
-		<Model Expanded="Yes" ID="{2CBB5130-5C4C-4BD5-873E-8B99FE4CE699}" Loaded="No" Name="Monster University" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../01.FISICO/Monster University.pdm"/>
-		<Model Expanded="Yes" ID="{DD15DF20-37FF-4688-B5E8-7888C4A967A6}" Loaded="No" Name="Monster University" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../01.FISICO/Monster University.pdm"/>
-		<Model ID="{2BBB2D1D-704D-4D3D-9B19-916F75363789}" Loaded="No" Name="Monster University" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="Monster University.ldm"/>
-		<Model ID="{2BBB2D1D-704D-4D3D-9B19-916F75363789}" Name="Monster University" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="Monster University.ldm"/>
-		<Model Expanded="Yes" ID="{B88B7DD1-9E9F-4E91-B9C2-4F001C31D208}" Name="Monster University" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../01.FISICO/01.MySQL/Monster University.pdm"/>
+		<Model Expanded="Yes" ID="{A6241059-19C1-41F4-B990-FCACF327AEFB}" Name="Monster University" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Monster University.cdm"/>
+		<Model Expanded="Yes" ID="{2BBB2D1D-704D-4D3D-9B19-916F75363789}" Name="Monster University" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="Monster University.ldm"/>
+		<Model Expanded="Yes" ID="{A7C338FE-2726-42D4-8F86-D54C251BBC33}" Name="Monster University" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../01.FISICO/02.SQLSERVER/Monster University.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
