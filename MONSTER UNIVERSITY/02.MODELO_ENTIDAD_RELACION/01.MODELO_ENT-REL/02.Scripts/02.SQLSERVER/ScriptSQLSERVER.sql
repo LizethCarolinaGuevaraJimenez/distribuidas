@@ -1042,6 +1042,7 @@ go
 /*==============================================================*/
 create table PEEST_ESTCIV (
    EST_ID               int                  not null,
+   EST_DETALLES         varchar(30)          not null,
    constraint PK_PEEST_ESTCIV primary key (EST_ID)
 )
 go
@@ -1061,6 +1062,7 @@ go
 /*==============================================================*/
 create table SEEST_ESTADO (
    EST_CODIGO           char(10)             not null,
+   EST_DESCRIPCION      varchar(30)             not null, 
    constraint PK_SEEST_ESTADO primary key (EST_CODIGO)
 )
 go

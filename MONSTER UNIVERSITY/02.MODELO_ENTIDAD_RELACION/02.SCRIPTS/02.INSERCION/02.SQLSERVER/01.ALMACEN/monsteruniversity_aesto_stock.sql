@@ -1,0 +1,2 @@
+INSERT INTO "aesto_stock" ("STO_ID", "BIEN_ID", "STO_CANTIDAD") VALUES (1,1,10.00);
+ 
