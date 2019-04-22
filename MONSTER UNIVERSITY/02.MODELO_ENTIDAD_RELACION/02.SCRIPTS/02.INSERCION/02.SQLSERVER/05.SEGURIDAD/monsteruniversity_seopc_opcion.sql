@@ -1,0 +1,1 @@
+INSERT INTO "seopc_opcion" ("OPC_CODIGO", "SIS_CODIGO", "OPC_DESCRIPCION") VALUES ('1','1','inicio');

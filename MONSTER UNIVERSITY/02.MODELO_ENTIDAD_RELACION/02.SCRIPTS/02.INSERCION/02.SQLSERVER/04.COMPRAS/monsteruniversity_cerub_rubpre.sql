@@ -1,0 +1,1 @@
+INSERT INTO "cerub_rubpre" ("RUB_CODIGO", "RUB_CATEGORIA", "RUB_PRESUPUESTO") VALUES (1,'Inmuebles',50000);

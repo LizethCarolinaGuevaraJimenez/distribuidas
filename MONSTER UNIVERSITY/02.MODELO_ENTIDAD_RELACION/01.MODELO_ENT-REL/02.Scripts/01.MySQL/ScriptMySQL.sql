@@ -250,6 +250,7 @@ create table PEEMP_EMPLEADO
 create table PEEST_ESTCIV
 (
    EST_ID               int not null,
+   EST_DETALLES         varchar(30),
    primary key (EST_ID)
 );
 
@@ -269,6 +270,7 @@ create table PESEX_SEXO
 create table SEEST_ESTADO
 (
    EST_CODIGO           char(10) not null,
+   EST_DESCRIPCION      varchar(30) not null,
    primary key (EST_CODIGO)
 );
 

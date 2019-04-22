@@ -1,0 +1,3 @@
+INSERT INTO "serol_rol" ("PER_CODIGO", "ROL_INSERCION", "ROL_ACTUALIZACION", "ROL_ELIMINACION", "ROL_CONSULTA") VALUES ('1','si','si','si','si');
+
+
