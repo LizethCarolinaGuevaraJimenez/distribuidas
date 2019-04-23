@@ -1174,7 +1174,7 @@ PreserveMode=Yes
 
 [ModelOptions\Generate\Cdm]
 PreserveMode=Yes</a:ModelOptionsText>
-<a:RepositoryFilename>C:\Users\Lizeth\Documents\GitHub\distribuidas\MONSTER UNIVERSITY\02.MODELO_ENTIDAD_RELACION\01.MODELO_ENT-REL\01.MODELOENTIDADRELACION\02.LOGICO\Monster University.cdm</a:RepositoryFilename>
+<a:RepositoryFilename>D:\Users\Jonathan\Documents\GitHub\distribuidas\MONSTER UNIVERSITY\02.MODELO_ENTIDAD_RELACION\01.MODELO_ENT-REL\01.MODELOENTIDADRELACION\02.LOGICO\Monster University.cdm</a:RepositoryFilename>
 <c:GeneratedModels>
 <o:Shortcut Id="o3">
 <a:ObjectID>1D384FEB-9834-4D13-B072-B1C0C6A4353D</a:ObjectID>
@@ -2454,8 +2454,8 @@ Shadow=0</a:DisplayPreferences>
 <o:RelationshipSymbol Id="o46">
 <a:CreationDate>1555464045</a:CreationDate>
 <a:ModificationDate>1555464934</a:ModificationDate>
-<a:Rect>((-8268,1487), (4433,3887))</a:Rect>
-<a:ListOfPoints>((-6868,2687),(4033,2687))</a:ListOfPoints>
+<a:Rect>((-8461,1472), (4494,3872))</a:Rect>
+<a:ListOfPoints>((-7061,2672),(4094,2672))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>5138</a:ArrowStyle>
 <a:LineColor>11184640</a:LineColor>
@@ -2476,8 +2476,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 <o:RelationshipSymbol Id="o50">
 <a:CreationDate>1555464772</a:CreationDate>
 <a:ModificationDate>1555464936</a:ModificationDate>
-<a:Rect>((10509,4156), (16509,11798))</a:Rect>
-<a:ListOfPoints>((13509,11398),(13509,5556))</a:ListOfPoints>
+<a:Rect>((10509,4121), (16508,11833))</a:Rect>
+<a:ListOfPoints>((13508,11433),(13508,5521))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4628</a:ArrowStyle>
 <a:LineColor>11184640</a:LineColor>
@@ -2498,8 +2498,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 <o:RelationshipSymbol Id="o53">
 <a:CreationDate>1555464836</a:CreationDate>
 <a:ModificationDate>1555464938</a:ModificationDate>
-<a:Rect>((-8268,-3675), (5833,-1275))</a:Rect>
-<a:ListOfPoints>((5433,-2475),(-6868,-2475))</a:ListOfPoints>
+<a:Rect>((-8461,-3667), (5794,-1267))</a:Rect>
+<a:ListOfPoints>((5394,-2467),(-7061,-2467))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4628</a:ArrowStyle>
 <a:LineColor>11184640</a:LineColor>
@@ -2520,8 +2520,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 <o:RelationshipSymbol Id="o56">
 <a:CreationDate>1555464837</a:CreationDate>
 <a:ModificationDate>1555464941</a:ModificationDate>
-<a:Rect>((-22016,-13120), (7126,-1709))</a:Rect>
-<a:ListOfPoints>((6726,-12074),(-16691,-12074),(-16691,-3109))</a:ListOfPoints>
+<a:Rect>((-21911,-13106), (7134,-1667))</a:Rect>
+<a:ListOfPoints>((6734,-12074),(-16691,-12074),(-16691,-3067))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4628</a:ArrowStyle>
 <a:LineColor>11184640</a:LineColor>
@@ -2543,7 +2543,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 <a:CreationDate>1555464045</a:CreationDate>
 <a:ModificationDate>1555464932</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-26514,-3109), (-6868,3633))</a:Rect>
+<a:Rect>((-26321,-3067), (-7061,3591))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -2564,7 +2564,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1555464045</a:CreationDate>
 <a:ModificationDate>1555464934</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((4033,-212), (22983,5556))</a:Rect>
+<a:Rect>((4094,-177), (22922,5521))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -2585,7 +2585,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1555464476</a:CreationDate>
 <a:ModificationDate>1555464938</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((5433,-6398), (25233,-1604))</a:Rect>
+<a:Rect>((5394,-6370), (25272,-1632))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -2606,7 +2606,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1555464477</a:CreationDate>
 <a:ModificationDate>1555464941</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((6726,-14471), (25136,-9677))</a:Rect>
+<a:Rect>((6734,-14443), (25128,-9705))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -2627,7 +2627,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1555464766</a:CreationDate>
 <a:ModificationDate>1555464936</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((3480,11398), (23202,17166))</a:Rect>
+<a:Rect>((3618,11433), (23064,17131))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -7910,7 +7910,7 @@ DAT 1555739609</a:History>
 <a:Creator>Jonathan</a:Creator>
 <a:ModificationDate>1555864983</a:ModificationDate>
 <a:Modifier>Jonathan</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/Lizeth/Documents/GitHub/distribuidas/MONSTER UNIVERSITY/02.MODELO_ENTIDAD_RELACION/01.MODELO_ENT-REL/01.MODELOENTIDADRELACION/02.LOGICO/Monster University.ldm</a:TargetModelURL>
+<a:TargetModelURL>file:///D|/Users/Jonathan/Documents/GitHub/distribuidas/MONSTER UNIVERSITY/02.MODELO_ENTIDAD_RELACION/01.MODELO_ENT-REL/01.MODELOENTIDADRELACION/02.LOGICO/Monster University.ldm</a:TargetModelURL>
 <a:TargetModelID>2BBB2D1D-704D-4D3D-9B19-916F75363789</a:TargetModelID>
 <a:TargetModelClassID>5F45F978-C4F3-4E35-A3FC-AF3318663A0F</a:TargetModelClassID>
 <a:TargetModelLastModificationDate>1555867269</a:TargetModelLastModificationDate>
