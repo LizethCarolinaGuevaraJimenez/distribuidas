@@ -1639,7 +1639,7 @@ Shadow=0
 <c:Symbols>
 <o:RelationshipSymbol Id="o9">
 <a:ModificationDate>1555741241</a:ModificationDate>
-<a:Rect>((14230,-14632), (27430,3885))</a:Rect>
+<a:Rect>((14321,-14632), (27340,3885))</a:Rect>
 <a:ListOfPoints>((20830,3485),(20830,-14232))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4882</a:ArrowStyle>
@@ -1660,7 +1660,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o13">
 <a:ModificationDate>1555741241</a:ModificationDate>
-<a:Rect>((-1741,12143), (36321,24186))</a:Rect>
+<a:Rect>((-1741,12143), (36231,24186))</a:Rect>
 <a:ListOfPoints>((-341,22986),(28911,22986),(28911,12543))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>5138</a:ArrowStyle>
@@ -1681,7 +1681,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o16">
 <a:ModificationDate>1555741241</a:ModificationDate>
-<a:Rect>((-14485,14733), (-4405,21777))</a:Rect>
+<a:Rect>((-14395,14733), (-4496,21777))</a:Rect>
 <a:ListOfPoints>((-9445,15133),(-9445,20377))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4627</a:ArrowStyle>
@@ -1765,7 +1765,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o28">
 <a:ModificationDate>1555741241</a:ModificationDate>
-<a:Rect>((-34286,-15506), (-1879,-6159))</a:Rect>
+<a:Rect>((-34196,-15506), (-1879,-6159))</a:Rect>
 <a:ListOfPoints>((-27896,-15106),(-27896,-7359),(-2279,-7359))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4628</a:ArrowStyle>
@@ -1786,7 +1786,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o31">
 <a:ModificationDate>1555741241</a:ModificationDate>
-<a:Rect>((-1585,-5430), (7295,7915))</a:Rect>
+<a:Rect>((-1494,-5430), (7205,7915))</a:Rect>
 <a:ListOfPoints>((2855,7515),(2855,-4030))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4628</a:ArrowStyle>
@@ -1807,7 +1807,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o33">
 <a:ModificationDate>1555741241</a:ModificationDate>
-<a:Rect>((-801,-17173), (11600,-8959))</a:Rect>
+<a:Rect>((-710,-17173), (11600,-8959))</a:Rect>
 <a:ListOfPoints>((4389,-9359),(4389,-16361),(11200,-16361))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4882</a:ArrowStyle>
@@ -1828,7 +1828,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o35">
 <a:ModificationDate>1555741241</a:ModificationDate>
-<a:Rect>((-21979,-2159), (-291,7915))</a:Rect>
+<a:Rect>((-21979,-2159), (-382,7915))</a:Rect>
 <a:ListOfPoints>((-7191,7515),(-7191,-959),(-20579,-959))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>4628</a:ArrowStyle>
@@ -1849,7 +1849,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:RelationshipSymbol Id="o38">
 <a:ModificationDate>1555741241</a:ModificationDate>
-<a:Rect>((-35802,490), (-25242,7702))</a:Rect>
+<a:Rect>((-35712,490), (-25333,7702))</a:Rect>
 <a:ListOfPoints>((-30522,1041),(-30522,7302))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>5138</a:ArrowStyle>
@@ -9065,12 +9065,12 @@ DAT 1555741238</a:History>
 <a:Code>MONSTER_UNIVERSITY</a:Code>
 <a:CreationDate>1555622097</a:CreationDate>
 <a:Creator>Jonathan</a:Creator>
-<a:ModificationDate>1555867236</a:ModificationDate>
+<a:ModificationDate>1556051461</a:ModificationDate>
 <a:Modifier>Jonathan</a:Modifier>
 <a:TargetModelURL>file:///D|/Users/Jonathan/Documents/GitHub/distribuidas/MONSTER UNIVERSITY/02.MODELO_ENTIDAD_RELACION/01.MODELO_ENT-REL/01.MODELOENTIDADRELACION/02.LOGICO/Monster University.cdm</a:TargetModelURL>
 <a:TargetModelID>A6241059-19C1-41F4-B990-FCACF327AEFB</a:TargetModelID>
 <a:TargetModelClassID>1E597170-9350-11D1-AB3C-0020AF71E433</a:TargetModelClassID>
-<a:TargetModelLastModificationDate>1555984861</a:TargetModelLastModificationDate>
+<a:TargetModelLastModificationDate>1556051461</a:TargetModelLastModificationDate>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o7"/>
 </c:SessionShortcuts>
