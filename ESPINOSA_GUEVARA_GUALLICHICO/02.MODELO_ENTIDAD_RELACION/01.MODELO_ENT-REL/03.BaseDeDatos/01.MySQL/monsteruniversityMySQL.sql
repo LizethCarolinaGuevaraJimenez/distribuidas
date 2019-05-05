@@ -426,18 +426,12 @@ DROP TABLE IF EXISTS `peemp_empleado`;
 CREATE TABLE `peemp_empleado` (
   `EMP_ID` int(11) NOT NULL,
   `CAR_ID` int(11) NOT NULL,
-  `SEX_ID` int(11) NOT NULL,
-  `EST_ID` int(11) NOT NULL,
   `EMP_CEDULA` int(11) DEFAULT NULL,
   `EMP_NOMBRE` varchar(100) DEFAULT NULL,
   `EMP_TELEFONO` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`EMP_ID`),
   KEY `FK_EMPLEADO_CARGO` (`CAR_ID`),
-  KEY `FK_EMPLEADO_ESTADO_CIVIL` (`EST_ID`),
-  KEY `FK_EMPLEADO_SEXO` (`SEX_ID`),
-  CONSTRAINT `FK_EMPLEADO_CARGO` FOREIGN KEY (`CAR_ID`) REFERENCES `pecar_cargo` (`CAR_ID`),
-  CONSTRAINT `FK_EMPLEADO_ESTADO_CIVIL` FOREIGN KEY (`EST_ID`) REFERENCES `peest_estciv` (`EST_ID`),
-  CONSTRAINT `FK_EMPLEADO_SEXO` FOREIGN KEY (`SEX_ID`) REFERENCES `pesex_sexo` (`SEX_ID`)
+  CONSTRAINT `FK_EMPLEADO_CARGO` FOREIGN KEY (`CAR_ID`) REFERENCES `pecar_cargo` (`CAR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -447,56 +441,8 @@ CREATE TABLE `peemp_empleado` (
 
 LOCK TABLES `peemp_empleado` WRITE;
 /*!40000 ALTER TABLE `peemp_empleado` DISABLE KEYS */;
-INSERT INTO `peemp_empleado` (`EMP_ID`, `CAR_ID`, `SEX_ID`, `EST_ID`, `EMP_CEDULA`, `EMP_NOMBRE`, `EMP_TELEFONO`) VALUES (1,1,2,1,1314344985,'Febe','098518071');
+INSERT INTO `peemp_empleado` (`EMP_ID`, `CAR_ID`, `EMP_CEDULA`, `EMP_NOMBRE`, `EMP_TELEFONO`) VALUES (1,1,1314344985,'Febe','098518071');
 /*!40000 ALTER TABLE `peemp_empleado` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `peest_estciv`
---
-
-DROP TABLE IF EXISTS `peest_estciv`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `peest_estciv` (
-  `EST_ID` int(11) NOT NULL,
-  `EST_DETALLES` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`EST_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `peest_estciv`
---
-
-LOCK TABLES `peest_estciv` WRITE;
-/*!40000 ALTER TABLE `peest_estciv` DISABLE KEYS */;
-INSERT INTO `peest_estciv` (`EST_ID`, `EST_DETALLES`) VALUES (1,'soltero');
-/*!40000 ALTER TABLE `peest_estciv` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pesex_sexo`
---
-
-DROP TABLE IF EXISTS `pesex_sexo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pesex_sexo` (
-  `SEX_ID` int(11) NOT NULL,
-  `SEX_DESCRIPCION` varchar(30) NOT NULL,
-  PRIMARY KEY (`SEX_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pesex_sexo`
---
-
-LOCK TABLES `pesex_sexo` WRITE;
-/*!40000 ALTER TABLE `pesex_sexo` DISABLE KEYS */;
-INSERT INTO `pesex_sexo` (`SEX_ID`, `SEX_DESCRIPCION`) VALUES (1,'Masculino'),(2,'Femenino');
-/*!40000 ALTER TABLE `pesex_sexo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -756,4 +702,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-03  1:15:01
+-- Dump completed on 2019-05-05  6:04:14

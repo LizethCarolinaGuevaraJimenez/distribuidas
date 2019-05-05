@@ -20,7 +20,7 @@ CREATE TABLE `peemp_empleado` (
   `EMP_TELEFONO` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`EMP_ID`),
   KEY `FK_EMPLEADO_CARGO` (`CAR_ID`), 
-  CONSTRAINT `FK_EMPLEADO_CARGO` FOREIGN KEY (`CAR_ID`) REFERENCES `pecar_cargo` (`CAR_ID`), 
+  CONSTRAINT `FK_EMPLEADO_CARGO` FOREIGN KEY (`CAR_ID`) REFERENCES `pecar_cargo` (`CAR_ID`)
 );
 /*!40101 SET character_set_client = @saved_cs_client */;
 
