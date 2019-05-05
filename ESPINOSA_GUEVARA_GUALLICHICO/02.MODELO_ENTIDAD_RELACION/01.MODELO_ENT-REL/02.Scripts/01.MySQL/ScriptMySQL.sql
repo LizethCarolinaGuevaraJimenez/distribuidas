@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     4/20/2019 1:22:14 AM                         */
+/* Created on:     5/4/2019 10:45:00 PM                         */
 /*==============================================================*/
 
 
@@ -34,10 +34,6 @@ drop table if exists PECAR_CARGO;
 
 drop table if exists PEEMP_EMPLEADO;
 
-drop table if exists PEEST_ESTCIV;
-
-drop table if exists PESEX_SEXO;
-
 drop table if exists SEEST_ESTADO;
 
 drop table if exists SEOPC_OPCION;
@@ -61,9 +57,9 @@ drop table if exists SEVEN_VENTAN;
 /*==============================================================*/
 create table AEENT_ENTALM
 (
-   ENT_NUMERO           int not null,
+   ENT_NUMERO           varchar(100) not null,
    ENT_FECHA            date,
-   ENT_NUMEROFACTURA    int,
+   ENT_NUMEROFACTURA    varchar(100),
    ENT_TOTALBIENES      int,
    ENT_VALORTOTAL       float,
    primary key (ENT_NUMERO)
@@ -74,8 +70,8 @@ create table AEENT_ENTALM
 /*==============================================================*/
 create table AEITE_ITEENT
 (
-   BIEN_ID              int not null,
-   ENT_NUMERO           int not null,
+   BIEN_ID              varchar(100) not null,
+   ENT_NUMERO           varchar(100) not null,
    ITEE_CANTIDADENTREGADA int,
    primary key (BIEN_ID, ENT_NUMERO)
 );
@@ -85,9 +81,9 @@ create table AEITE_ITEENT
 /*==============================================================*/
 create table AEITE_ITESAL
 (
-   SAL_NUMERO           int not null,
-   BIEN_ID              int not null,
-   EMP_ID               int not null,
+   SAL_NUMERO           varchar(100) not null,
+   BIEN_ID              varchar(100) not null,
+   EMP_ID               varchar(100) not null,
    ITESA_CANTIDADENTREGADA int,
    primary key (SAL_NUMERO, BIEN_ID, EMP_ID)
 );
@@ -97,10 +93,10 @@ create table AEITE_ITESAL
 /*==============================================================*/
 create table AEPRO_PROVEEDOR
 (
-   PRO_ID               int not null,
-   PRO_RUC              int,
+   PRO_ID               varchar(100) not null,
+   PRO_RUC              varchar(100),
    PRO_NOMBRE           varchar(100),
-   PRO_TELEFONO         varchar(10),
+   PRO_TELEFONO         varchar(15),
    PRO_DIRECCION        varchar(200),
    primary key (PRO_ID)
 );
@@ -110,8 +106,8 @@ create table AEPRO_PROVEEDOR
 /*==============================================================*/
 create table AESAL_SALALM
 (
-   SAL_NUMERO           int not null,
-   EMP_ID               int not null,
+   SAL_NUMERO           varchar(100) not null,
+   EMP_ID               varchar(100) not null,
    SAL_FECHASALIDA      date,
    SAL_FECHAENTREGA     date,
    primary key (SAL_NUMERO)
@@ -122,8 +118,8 @@ create table AESAL_SALALM
 /*==============================================================*/
 create table AESTO_STOCK
 (
-   STO_ID               int not null,
-   BIEN_ID              int not null,
+   STO_ID               varchar(100) not null,
+   BIEN_ID              varchar(100) not null,
    STO_CANTIDAD         numeric(10,2),
    primary key (STO_ID)
 );
@@ -133,8 +129,8 @@ create table AESTO_STOCK
 /*==============================================================*/
 create table CEITE_ITESOL
 (
-   SOL_NUMERO           int not null,
-   BIEN_ID              int not null,
+   SOL_NUMERO           varchar(100) not null,
+   BIEN_ID              varchar(100) not null,
    ITES_CANTIDADSOLICITADA int,
    ITES_CANTIDADDESPACHADA int,
    ITES_VALORTOTAL      float,
@@ -146,8 +142,8 @@ create table CEITE_ITESOL
 /*==============================================================*/
 create table CEORD_ORDCON
 (
-   ORD_NUMERO           int not null,
-   PRO_ID               int not null,
+   ORD_NUMERO           varchar(100) not null,
+   PRO_ID               varchar(100) not null,
    ORD_FECHAORDEN       date,
    ORD_FECHAENTREGA     date,
    ORD_MONTOTOTAL       float,
@@ -160,7 +156,7 @@ create table CEORD_ORDCON
 /*==============================================================*/
 create table CERUB_RUBPRE
 (
-   RUB_CODIGO           int not null,
+   RUB_CODIGO           varchar(100) not null,
    RUB_CATEGORIA        varchar(100),
    RUB_PRESUPUESTO      float,
    primary key (RUB_CODIGO)
@@ -171,10 +167,10 @@ create table CERUB_RUBPRE
 /*==============================================================*/
 create table CESOL_SOLCOM
 (
-   SOL_NUMERO           int not null,
-   EMP_ID               int not null,
-   ARE_ID               int not null,
-   RUB_CODIGO           int not null,
+   SOL_NUMERO           varchar(100) not null,
+   EMP_ID               varchar(100) not null,
+   ARE_ID               varchar(100) not null,
+   RUB_CODIGO           varchar(100) not null,
    SOL_FECHA            date,
    SOL_APROBACIONDIRECTORFINANCIERO bool,
    SOL_APROBACIONJEFEAREA bool,
@@ -187,8 +183,8 @@ create table CESOL_SOLCOM
 /*==============================================================*/
 create table MEBIE_BIENES
 (
-   BIEN_ID              int not null,
-   PRO_ID               int not null,
+   BIEN_ID              varchar(100) not null,
+   PRO_ID               varchar(100) not null,
    BIEN_NOMBRE          varchar(100),
    BIEN_UNIDADMEDIDA    varchar(100),
    BIEN_TIPO            varchar(100),
@@ -200,9 +196,9 @@ create table MEBIE_BIENES
 /*==============================================================*/
 create table MEDET_DETORD
 (
-   SOL_NUMERO           int not null,
-   BIEN_ID              int not null,
-   ORD_NUMERO           int not null,
+   SOL_NUMERO           varchar(100) not null,
+   BIEN_ID              varchar(100) not null,
+   ORD_NUMERO           varchar(100) not null,
    primary key (SOL_NUMERO, BIEN_ID, ORD_NUMERO)
 );
 
@@ -211,7 +207,7 @@ create table MEDET_DETORD
 /*==============================================================*/
 create table PEARE_AREA
 (
-   ARE_ID               int not null,
+   ARE_ID               varchar(100) not null,
    ARE_NOMBRE           varchar(100),
    ARE_UBICACION        varchar(100),
    primary key (ARE_ID)
@@ -222,8 +218,8 @@ create table PEARE_AREA
 /*==============================================================*/
 create table PECAR_CARGO
 (
-   CAR_ID               int not null,
-   ARE_ID               int not null,
+   CAR_ID               varchar(100) not null,
+   ARE_ID               varchar(100) not null,
    CAR_NOMBRE           varchar(100) not null,
    CAR_DETALLES         varchar(500) not null,
    primary key (CAR_ID)
@@ -234,34 +230,12 @@ create table PECAR_CARGO
 /*==============================================================*/
 create table PEEMP_EMPLEADO
 (
-   EMP_ID               int not null,
-   CAR_ID               int not null,
-   SEX_ID               int not null,
-   EST_ID               int not null,
-   EMP_CEDULA           int,
+   EMP_ID               varchar(100) not null,
+   CAR_ID               varchar(100) not null,
+   EMP_CEDULA           varchar(15),
    EMP_NOMBRE           varchar(100),
    EMP_TELEFONO         varchar(10),
    primary key (EMP_ID)
-);
-
-/*==============================================================*/
-/* Table: PEEST_ESTCIV                                          */
-/*==============================================================*/
-create table PEEST_ESTCIV
-(
-   EST_ID               int not null,
-   EST_DETALLES         varchar(30),
-   primary key (EST_ID)
-);
-
-/*==============================================================*/
-/* Table: PESEX_SEXO                                            */
-/*==============================================================*/
-create table PESEX_SEXO
-(
-   SEX_ID               int not null,
-   SEX_DESCRIPCION      varchar(30) not null,
-   primary key (SEX_ID)
 );
 
 /*==============================================================*/
@@ -270,7 +244,7 @@ create table PESEX_SEXO
 create table SEEST_ESTADO
 (
    EST_CODIGO           char(10) not null,
-   EST_DESCRIPCION      varchar(30) not null,
+   EST_DESCRIPCION      varchar(30),
    primary key (EST_CODIGO)
 );
 
@@ -349,7 +323,7 @@ alter table SESIS_SISTEM comment 'Entidad de sistema, modelo lógico de seguridad
 /*==============================================================*/
 create table SEUSU_USAPER
 (
-   EMP_ID               int not null,
+   EMP_ID               varchar(100) not null,
    PER_CODIGO           char(10) not null,
    USUPER_FECHAASIGNACION date not null,
    USUPER_FECHACAMBIO   date not null,
@@ -363,7 +337,7 @@ alter table SEUSU_USAPER comment 'Entidad de usuario por perfil, modelo lógico d
 /*==============================================================*/
 create table SEUSU_USUARI
 (
-   EMP_ID               int not null,
+   EMP_ID               varchar(100) not null,
    EST_CODIGO           char(10) not null,
    USU_CONTRASENA       varchar(200) not null,
    USU_PIEFIRMA         varchar(100) not null,
@@ -441,12 +415,6 @@ alter table PECAR_CARGO add constraint FK_CARGO_AREA foreign key (ARE_ID)
 
 alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_CARGO foreign key (CAR_ID)
       references PECAR_CARGO (CAR_ID) on delete restrict on update restrict;
-
-alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_ESTADO_CIVIL foreign key (EST_ID)
-      references PEEST_ESTCIV (EST_ID) on delete restrict on update restrict;
-
-alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_SEXO foreign key (SEX_ID)
-      references PESEX_SEXO (SEX_ID) on delete restrict on update restrict;
 
 alter table SEOPC_OPCION add constraint FK_XR_XESIS_XEOPC foreign key (SIS_CODIGO)
       references SESIS_SISTEM (SIS_CODIGO) on delete restrict on update restrict;

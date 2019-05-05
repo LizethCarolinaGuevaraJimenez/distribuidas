@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     4/20/2019 1:24:47 AM                         */
+/* Created on:     5/4/2019 10:44:35 PM                         */
 /*==============================================================*/
 
 
@@ -128,20 +128,6 @@ if exists (select 1
    where r.fkeyid = object_id('PEEMP_EMPLEADO') and o.name = 'FK_PEEMP_EM_EMPLEADO__PECAR_CA')
 alter table PEEMP_EMPLEADO
    drop constraint FK_PEEMP_EM_EMPLEADO__PECAR_CA
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('PEEMP_EMPLEADO') and o.name = 'FK_PEEMP_EM_EMPLEADO__PEEST_ES')
-alter table PEEMP_EMPLEADO
-   drop constraint FK_PEEMP_EM_EMPLEADO__PEEST_ES
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('PEEMP_EMPLEADO') and o.name = 'FK_PEEMP_EM_EMPLEADO__PESEX_SE')
-alter table PEEMP_EMPLEADO
-   drop constraint FK_PEEMP_EM_EMPLEADO__PESEX_SE
 go
 
 if exists (select 1
@@ -468,24 +454,6 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('PEEMP_EMPLEADO')
-            and   name  = 'EMPLEADO_ESTADO_CIVIL_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index PEEMP_EMPLEADO.EMPLEADO_ESTADO_CIVIL_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('PEEMP_EMPLEADO')
-            and   name  = 'EMPLEADO_SEXO_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index PEEMP_EMPLEADO.EMPLEADO_SEXO_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('PEEMP_EMPLEADO')
             and   name  = 'EMPLEADO_CARGO_FK'
             and   indid > 0
             and   indid < 255)
@@ -497,20 +465,6 @@ if exists (select 1
            where  id = object_id('PEEMP_EMPLEADO')
             and   type = 'U')
    drop table PEEMP_EMPLEADO
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('PEEST_ESTCIV')
-            and   type = 'U')
-   drop table PEEST_ESTCIV
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('PESEX_SEXO')
-            and   type = 'U')
-   drop table PESEX_SEXO
 go
 
 if exists (select 1
@@ -652,9 +606,9 @@ go
 /* Table: AEENT_ENTALM                                          */
 /*==============================================================*/
 create table AEENT_ENTALM (
-   ENT_NUMERO           int                  not null,
+   ENT_NUMERO           varchar(100)         not null,
    ENT_FECHA            datetime             null,
-   ENT_NUMEROFACTURA    int                  null,
+   ENT_NUMEROFACTURA    varchar(100)         null,
    ENT_TOTALBIENES      int                  null,
    ENT_VALORTOTAL       float                null,
    constraint PK_AEENT_ENTALM primary key (ENT_NUMERO)
@@ -665,8 +619,8 @@ go
 /* Table: AEITE_ITEENT                                          */
 /*==============================================================*/
 create table AEITE_ITEENT (
-   BIEN_ID              int                  not null,
-   ENT_NUMERO           int                  not null,
+   BIEN_ID              varchar(100)         not null,
+   ENT_NUMERO           varchar(100)         not null,
    ITEE_CANTIDADENTREGADA int                  null,
    constraint PK_AEITE_ITEENT primary key (BIEN_ID, ENT_NUMERO)
 )
@@ -696,9 +650,9 @@ go
 /* Table: AEITE_ITESAL                                          */
 /*==============================================================*/
 create table AEITE_ITESAL (
-   SAL_NUMERO           int                  not null,
-   BIEN_ID              int                  not null,
-   EMP_ID               int                  not null,
+   SAL_NUMERO           varchar(100)         not null,
+   BIEN_ID              varchar(100)         not null,
+   EMP_ID               varchar(100)         not null,
    ITESA_CANTIDADENTREGADA int                  null,
    constraint PK_AEITE_ITESAL primary key (SAL_NUMERO, BIEN_ID, EMP_ID)
 )
@@ -738,10 +692,10 @@ go
 /* Table: AEPRO_PROVEEDOR                                       */
 /*==============================================================*/
 create table AEPRO_PROVEEDOR (
-   PRO_ID               int                  not null,
-   PRO_RUC              int                  null,
+   PRO_ID               varchar(100)         not null,
+   PRO_RUC              varchar(100)         null,
    PRO_NOMBRE           varchar(100)         null,
-   PRO_TELEFONO         varchar(10)          null,
+   PRO_TELEFONO         varchar(15)          null,
    PRO_DIRECCION        varchar(200)         null,
    constraint PK_AEPRO_PROVEEDOR primary key (PRO_ID)
 )
@@ -751,8 +705,8 @@ go
 /* Table: AESAL_SALALM                                          */
 /*==============================================================*/
 create table AESAL_SALALM (
-   SAL_NUMERO           int                  not null,
-   EMP_ID               int                  not null,
+   SAL_NUMERO           varchar(100)         not null,
+   EMP_ID               varchar(100)         not null,
    SAL_FECHASALIDA      datetime             null,
    SAL_FECHAENTREGA     datetime             null,
    constraint PK_AESAL_SALALM primary key (SAL_NUMERO)
@@ -773,8 +727,8 @@ go
 /* Table: AESTO_STOCK                                           */
 /*==============================================================*/
 create table AESTO_STOCK (
-   STO_ID               int                  not null,
-   BIEN_ID              int                  not null,
+   STO_ID               varchar(100)         not null,
+   BIEN_ID              varchar(100)         not null,
    STO_CANTIDAD         numeric(10,2)        null,
    constraint PK_AESTO_STOCK primary key (STO_ID)
 )
@@ -794,8 +748,8 @@ go
 /* Table: CEITE_ITESOL                                          */
 /*==============================================================*/
 create table CEITE_ITESOL (
-   SOL_NUMERO           int                  not null,
-   BIEN_ID              int                  not null,
+   SOL_NUMERO           varchar(100)         not null,
+   BIEN_ID              varchar(100)         not null,
    ITES_CANTIDADSOLICITADA int                  null,
    ITES_CANTIDADDESPACHADA int                  null,
    ITES_VALORTOTAL      float                null,
@@ -827,8 +781,8 @@ go
 /* Table: CEORD_ORDCON                                          */
 /*==============================================================*/
 create table CEORD_ORDCON (
-   ORD_NUMERO           int                  not null,
-   PRO_ID               int                  not null,
+   ORD_NUMERO           varchar(100)         not null,
+   PRO_ID               varchar(100)         not null,
    ORD_FECHAORDEN       datetime             null,
    ORD_FECHAENTREGA     datetime             null,
    ORD_MONTOTOTAL       float                null,
@@ -851,7 +805,7 @@ go
 /* Table: CERUB_RUBPRE                                          */
 /*==============================================================*/
 create table CERUB_RUBPRE (
-   RUB_CODIGO           int                  not null,
+   RUB_CODIGO           varchar(100)         not null,
    RUB_CATEGORIA        varchar(100)         null,
    RUB_PRESUPUESTO      float                null,
    constraint PK_CERUB_RUBPRE primary key (RUB_CODIGO)
@@ -862,10 +816,10 @@ go
 /* Table: CESOL_SOLCOM                                          */
 /*==============================================================*/
 create table CESOL_SOLCOM (
-   SOL_NUMERO           int                  not null,
-   EMP_ID               int                  not null,
-   ARE_ID               int                  not null,
-   RUB_CODIGO           int                  not null,
+   SOL_NUMERO           varchar(100)         not null,
+   EMP_ID               varchar(100)         not null,
+   ARE_ID               varchar(100)         not null,
+   RUB_CODIGO           varchar(100)         not null,
    SOL_FECHA            datetime             null,
    SOL_APROBACIONDIRECTORFINANCIERO bit                  null,
    SOL_APROBACIONJEFEAREA bit                  null,
@@ -908,8 +862,8 @@ go
 /* Table: MEBIE_BIENES                                          */
 /*==============================================================*/
 create table MEBIE_BIENES (
-   BIEN_ID              int                  not null,
-   PRO_ID               int                  not null,
+   BIEN_ID              varchar(100)         not null,
+   PRO_ID               varchar(100)         not null,
    BIEN_NOMBRE          varchar(100)         null,
    BIEN_UNIDADMEDIDA    varchar(100)         null,
    BIEN_TIPO            varchar(100)         null,
@@ -931,9 +885,9 @@ go
 /* Table: MEDET_DETORD                                          */
 /*==============================================================*/
 create table MEDET_DETORD (
-   SOL_NUMERO           int                  not null,
-   BIEN_ID              int                  not null,
-   ORD_NUMERO           int                  not null,
+   SOL_NUMERO           varchar(100)         not null,
+   BIEN_ID              varchar(100)         not null,
+   ORD_NUMERO           varchar(100)         not null,
    constraint PK_MEDET_DETORD primary key (SOL_NUMERO, BIEN_ID, ORD_NUMERO)
 )
 go
@@ -963,7 +917,7 @@ go
 /* Table: PEARE_AREA                                            */
 /*==============================================================*/
 create table PEARE_AREA (
-   ARE_ID               int                  not null,
+   ARE_ID               varchar(100)         not null,
    ARE_NOMBRE           varchar(100)         null,
    ARE_UBICACION        varchar(100)         null,
    constraint PK_PEARE_AREA primary key (ARE_ID)
@@ -974,8 +928,8 @@ go
 /* Table: PECAR_CARGO                                           */
 /*==============================================================*/
 create table PECAR_CARGO (
-   CAR_ID               int                  not null,
-   ARE_ID               int                  not null,
+   CAR_ID               varchar(100)         not null,
+   ARE_ID               varchar(100)         not null,
    CAR_NOMBRE           varchar(100)         not null,
    CAR_DETALLES         varchar(500)         not null,
    constraint PK_PECAR_CARGO primary key (CAR_ID)
@@ -996,11 +950,9 @@ go
 /* Table: PEEMP_EMPLEADO                                        */
 /*==============================================================*/
 create table PEEMP_EMPLEADO (
-   EMP_ID               int                  not null,
-   CAR_ID               int                  not null,
-   SEX_ID               int                  not null,
-   EST_ID               int                  not null,
-   EMP_CEDULA           int                  null,
+   EMP_ID               varchar(100)         not null,
+   CAR_ID               varchar(100)         not null,
+   EMP_CEDULA           varchar(15)          null,
    EMP_NOMBRE           varchar(100)         null,
    EMP_TELEFONO         varchar(10)          null,
    constraint PK_PEEMP_EMPLEADO primary key (EMP_ID)
@@ -1018,51 +970,11 @@ create nonclustered index EMPLEADO_CARGO_FK on PEEMP_EMPLEADO (CAR_ID ASC)
 go
 
 /*==============================================================*/
-/* Index: EMPLEADO_SEXO_FK                                      */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EMPLEADO_SEXO_FK on PEEMP_EMPLEADO (SEX_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: EMPLEADO_ESTADO_CIVIL_FK                              */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EMPLEADO_ESTADO_CIVIL_FK on PEEMP_EMPLEADO (EST_ID ASC)
-go
-
-/*==============================================================*/
-/* Table: PEEST_ESTCIV                                          */
-/*==============================================================*/
-create table PEEST_ESTCIV (
-   EST_ID               int                  not null,
-   EST_DETALLES         varchar(30)          not null,
-   constraint PK_PEEST_ESTCIV primary key (EST_ID)
-)
-go
-
-/*==============================================================*/
-/* Table: PESEX_SEXO                                            */
-/*==============================================================*/
-create table PESEX_SEXO (
-   SEX_ID               int                  not null,
-   SEX_DESCRIPCION      varchar(30)          not null,
-   constraint PK_PESEX_SEXO primary key (SEX_ID)
-)
-go
-
-/*==============================================================*/
 /* Table: SEEST_ESTADO                                          */
 /*==============================================================*/
 create table SEEST_ESTADO (
    EST_CODIGO           char(10)             not null,
-   EST_DESCRIPCION      varchar(30)             not null, 
+   EST_DESCRIPCION      varchar(30)          null,
    constraint PK_SEEST_ESTADO primary key (EST_CODIGO)
 )
 go
@@ -1271,7 +1183,7 @@ go
 /* Table: SEUSU_USAPER                                          */
 /*==============================================================*/
 create table SEUSU_USAPER (
-   EMP_ID               int                  not null,
+   EMP_ID               varchar(100)         not null,
    PER_CODIGO           char(10)             not null,
    USUPER_FECHAASIGNACION datetime             not null,
    USUPER_FECHACAMBIO   datetime             not null,
@@ -1320,7 +1232,7 @@ go
 /* Table: SEUSU_USUARI                                          */
 /*==============================================================*/
 create table SEUSU_USUARI (
-   EMP_ID               int                  not null,
+   EMP_ID               varchar(100)         not null,
    EST_CODIGO           char(10)             not null,
    USU_CONTRASENA       varchar(200)         not null,
    USU_PIEFIRMA         varchar(100)         not null,
@@ -1484,16 +1396,6 @@ go
 alter table PEEMP_EMPLEADO
    add constraint FK_PEEMP_EM_EMPLEADO__PECAR_CA foreign key (CAR_ID)
       references PECAR_CARGO (CAR_ID)
-go
-
-alter table PEEMP_EMPLEADO
-   add constraint FK_PEEMP_EM_EMPLEADO__PEEST_ES foreign key (EST_ID)
-      references PEEST_ESTCIV (EST_ID)
-go
-
-alter table PEEMP_EMPLEADO
-   add constraint FK_PEEMP_EM_EMPLEADO__PESEX_SE foreign key (SEX_ID)
-      references PESEX_SEXO (SEX_ID)
 go
 
 alter table SEOPC_OPCION

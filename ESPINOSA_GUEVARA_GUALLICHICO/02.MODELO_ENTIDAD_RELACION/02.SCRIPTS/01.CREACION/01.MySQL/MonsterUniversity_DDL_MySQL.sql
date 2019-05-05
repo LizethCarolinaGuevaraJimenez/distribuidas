@@ -34,10 +34,6 @@ drop table if exists PECAR_CARGO;
 
 drop table if exists PEEMP_EMPLEADO;
 
-drop table if exists PEEST_ESTCIV;
-
-drop table if exists PESEX_SEXO;
-
 drop table if exists SEEST_ESTADO;
 
 drop table if exists SEOPC_OPCION;
@@ -235,33 +231,12 @@ create table PECAR_CARGO
 create table PEEMP_EMPLEADO
 (
    EMP_ID               int not null,
-   CAR_ID               int not null,
-   SEX_ID               int not null,
-   EST_ID               int not null,
+   CAR_ID               int not null, 
    EMP_CEDULA           int,
    EMP_NOMBRE           varchar(100),
    EMP_TELEFONO         varchar(10),
    primary key (EMP_ID)
-);
-
-/*==============================================================*/
-/* Table: ESTADO CIVIL                                          */
-/*==============================================================*/
-create table PEEST_ESTCIV
-(
-   EST_ID               int not null,
-   primary key (EST_ID)
-);
-
-/*==============================================================*/
-/* Table: SEXO                                                  */
-/*==============================================================*/
-create table PESEX_SEXO
-(
-   SEX_ID               int not null,
-   SEX_DESCRIPCION      varchar(30) not null,
-   primary key (SEX_ID)
-);
+); 
 
 /*==============================================================*/
 /* Table: ESTADO                                                */
@@ -438,14 +413,8 @@ alter table PECAR_CARGO add constraint FK_CARGO_AREA foreign key (ARE_ID)
       references PEARE_AREA (ARE_ID) on delete restrict on update restrict;
 
 alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_CARGO foreign key (CAR_ID)
-      references PECAR_CARGO (CAR_ID) on delete restrict on update restrict;
-
-alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_ESTADO_CIVIL foreign key (EST_ID)
-      references PEEST_ESTCIV (EST_ID) on delete restrict on update restrict;
-
-alter table PEEMP_EMPLEADO add constraint FK_EMPLEADO_SEXO foreign key (SEX_ID)
-      references PESEX_SEXO (SEX_ID) on delete restrict on update restrict;
-
+      references PECAR_CARGO (CAR_ID) on delete restrict on update restrict; 
+  
 alter table SEOPC_OPCION add constraint FK_XR_XESIS_XEOPC foreign key (SIS_CODIGO)
       references SESIS_SISTEM (SIS_CODIGO) on delete restrict on update restrict;
 
