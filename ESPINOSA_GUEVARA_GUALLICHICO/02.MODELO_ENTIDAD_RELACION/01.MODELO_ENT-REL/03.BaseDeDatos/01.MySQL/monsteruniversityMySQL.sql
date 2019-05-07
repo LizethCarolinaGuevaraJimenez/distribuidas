@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `aeent_entalm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aeent_entalm` (
-  `ENT_NUMERO` int(11) NOT NULL,
+  `ENT_NUMERO` varchar(100) NOT NULL,
   `ENT_FECHA` date DEFAULT NULL,
-  `ENT_NUMEROFACTURA` int(11) DEFAULT NULL,
+  `ENT_NUMEROFACTURA` varchar(100) DEFAULT NULL,
   `ENT_TOTALBIENES` int(11) DEFAULT NULL,
   `ENT_VALORTOTAL` float DEFAULT NULL,
   PRIMARY KEY (`ENT_NUMERO`)
@@ -40,7 +40,6 @@ CREATE TABLE `aeent_entalm` (
 
 LOCK TABLES `aeent_entalm` WRITE;
 /*!40000 ALTER TABLE `aeent_entalm` DISABLE KEYS */;
-INSERT INTO `aeent_entalm` (`ENT_NUMERO`, `ENT_FECHA`, `ENT_NUMEROFACTURA`, `ENT_TOTALBIENES`, `ENT_VALORTOTAL`) VALUES (1,'2012-12-12',1208456,20,25000);
 /*!40000 ALTER TABLE `aeent_entalm` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,8 +51,8 @@ DROP TABLE IF EXISTS `aeite_iteent`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aeite_iteent` (
-  `BIEN_ID` int(11) NOT NULL,
-  `ENT_NUMERO` int(11) NOT NULL,
+  `BIEN_ID` varchar(100) NOT NULL,
+  `ENT_NUMERO` varchar(100) NOT NULL,
   `ITEE_CANTIDADENTREGADA` int(11) DEFAULT NULL,
   PRIMARY KEY (`BIEN_ID`,`ENT_NUMERO`),
   KEY `FK_ITEM_ENTRADA_ENTRADA` (`ENT_NUMERO`),
@@ -68,7 +67,6 @@ CREATE TABLE `aeite_iteent` (
 
 LOCK TABLES `aeite_iteent` WRITE;
 /*!40000 ALTER TABLE `aeite_iteent` DISABLE KEYS */;
-INSERT INTO `aeite_iteent` (`BIEN_ID`, `ENT_NUMERO`, `ITEE_CANTIDADENTREGADA`) VALUES (1,1,10);
 /*!40000 ALTER TABLE `aeite_iteent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,9 +78,9 @@ DROP TABLE IF EXISTS `aeite_itesal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aeite_itesal` (
-  `SAL_NUMERO` int(11) NOT NULL,
-  `BIEN_ID` int(11) NOT NULL,
-  `EMP_ID` int(11) NOT NULL,
+  `SAL_NUMERO` varchar(100) NOT NULL,
+  `BIEN_ID` varchar(100) NOT NULL,
+  `EMP_ID` varchar(100) NOT NULL,
   `ITESA_CANTIDADENTREGADA` int(11) DEFAULT NULL,
   PRIMARY KEY (`SAL_NUMERO`,`BIEN_ID`,`EMP_ID`),
   KEY `FK_BIENES_ITEM_SALIDA` (`BIEN_ID`),
@@ -99,7 +97,6 @@ CREATE TABLE `aeite_itesal` (
 
 LOCK TABLES `aeite_itesal` WRITE;
 /*!40000 ALTER TABLE `aeite_itesal` DISABLE KEYS */;
-INSERT INTO `aeite_itesal` (`SAL_NUMERO`, `BIEN_ID`, `EMP_ID`, `ITESA_CANTIDADENTREGADA`) VALUES (1,1,1,10);
 /*!40000 ALTER TABLE `aeite_itesal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,10 +108,10 @@ DROP TABLE IF EXISTS `aepro_proveedor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aepro_proveedor` (
-  `PRO_ID` int(11) NOT NULL,
-  `PRO_RUC` int(11) DEFAULT NULL,
+  `PRO_ID` varchar(100) NOT NULL,
+  `PRO_RUC` varchar(100) DEFAULT NULL,
   `PRO_NOMBRE` varchar(100) DEFAULT NULL,
-  `PRO_TELEFONO` varchar(10) DEFAULT NULL,
+  `PRO_TELEFONO` varchar(15) DEFAULT NULL,
   `PRO_DIRECCION` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`PRO_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -126,7 +123,6 @@ CREATE TABLE `aepro_proveedor` (
 
 LOCK TABLES `aepro_proveedor` WRITE;
 /*!40000 ALTER TABLE `aepro_proveedor` DISABLE KEYS */;
-INSERT INTO `aepro_proveedor` (`PRO_ID`, `PRO_RUC`, `PRO_NOMBRE`, `PRO_TELEFONO`, `PRO_DIRECCION`) VALUES (1,12123,'Carpimarck','0985138018','La aurora');
 /*!40000 ALTER TABLE `aepro_proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,8 +134,8 @@ DROP TABLE IF EXISTS `aesal_salalm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aesal_salalm` (
-  `SAL_NUMERO` int(11) NOT NULL,
-  `EMP_ID` int(11) NOT NULL,
+  `SAL_NUMERO` varchar(100) NOT NULL,
+  `EMP_ID` varchar(100) NOT NULL,
   `SAL_FECHASALIDA` date DEFAULT NULL,
   `SAL_FECHAENTREGA` date DEFAULT NULL,
   PRIMARY KEY (`SAL_NUMERO`),
@@ -154,7 +150,6 @@ CREATE TABLE `aesal_salalm` (
 
 LOCK TABLES `aesal_salalm` WRITE;
 /*!40000 ALTER TABLE `aesal_salalm` DISABLE KEYS */;
-INSERT INTO `aesal_salalm` (`SAL_NUMERO`, `EMP_ID`, `SAL_FECHASALIDA`, `SAL_FECHAENTREGA`) VALUES (1,1,'2012-12-12','2012-12-12');
 /*!40000 ALTER TABLE `aesal_salalm` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,8 +161,8 @@ DROP TABLE IF EXISTS `aesto_stock`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aesto_stock` (
-  `STO_ID` int(11) NOT NULL,
-  `BIEN_ID` int(11) NOT NULL,
+  `STO_ID` varchar(100) NOT NULL,
+  `BIEN_ID` varchar(100) NOT NULL,
   `STO_CANTIDAD` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`STO_ID`),
   KEY `FK_BIENES_STOCK` (`BIEN_ID`),
@@ -181,7 +176,6 @@ CREATE TABLE `aesto_stock` (
 
 LOCK TABLES `aesto_stock` WRITE;
 /*!40000 ALTER TABLE `aesto_stock` DISABLE KEYS */;
-INSERT INTO `aesto_stock` (`STO_ID`, `BIEN_ID`, `STO_CANTIDAD`) VALUES (1,1,10.00);
 /*!40000 ALTER TABLE `aesto_stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,8 +187,8 @@ DROP TABLE IF EXISTS `ceite_itesol`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ceite_itesol` (
-  `SOL_NUMERO` int(11) NOT NULL,
-  `BIEN_ID` int(11) NOT NULL,
+  `SOL_NUMERO` varchar(100) NOT NULL,
+  `BIEN_ID` varchar(100) NOT NULL,
   `ITES_CANTIDADSOLICITADA` int(11) DEFAULT NULL,
   `ITES_CANTIDADDESPACHADA` int(11) DEFAULT NULL,
   `ITES_VALORTOTAL` float DEFAULT NULL,
@@ -211,7 +205,6 @@ CREATE TABLE `ceite_itesol` (
 
 LOCK TABLES `ceite_itesol` WRITE;
 /*!40000 ALTER TABLE `ceite_itesol` DISABLE KEYS */;
-INSERT INTO `ceite_itesol` (`SOL_NUMERO`, `BIEN_ID`, `ITES_CANTIDADSOLICITADA`, `ITES_CANTIDADDESPACHADA`, `ITES_VALORTOTAL`) VALUES (1,1,10,10,25000);
 /*!40000 ALTER TABLE `ceite_itesol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,8 +216,8 @@ DROP TABLE IF EXISTS `ceord_ordcon`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ceord_ordcon` (
-  `ORD_NUMERO` int(11) NOT NULL,
-  `PRO_ID` int(11) NOT NULL,
+  `ORD_NUMERO` varchar(100) NOT NULL,
+  `PRO_ID` varchar(100) NOT NULL,
   `ORD_FECHAORDEN` date DEFAULT NULL,
   `ORD_FECHAENTREGA` date DEFAULT NULL,
   `ORD_MONTOTOTAL` float DEFAULT NULL,
@@ -241,7 +234,6 @@ CREATE TABLE `ceord_ordcon` (
 
 LOCK TABLES `ceord_ordcon` WRITE;
 /*!40000 ALTER TABLE `ceord_ordcon` DISABLE KEYS */;
-INSERT INTO `ceord_ordcon` (`ORD_NUMERO`, `PRO_ID`, `ORD_FECHAORDEN`, `ORD_FECHAENTREGA`, `ORD_MONTOTOTAL`, `ORD_APROVACIONDIRECTORFINANCIERO`) VALUES (1,1,'2012-12-12','2012-12-12',25000,1);
 /*!40000 ALTER TABLE `ceord_ordcon` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +245,7 @@ DROP TABLE IF EXISTS `cerub_rubpre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cerub_rubpre` (
-  `RUB_CODIGO` int(11) NOT NULL,
+  `RUB_CODIGO` varchar(100) NOT NULL,
   `RUB_CATEGORIA` varchar(100) DEFAULT NULL,
   `RUB_PRESUPUESTO` float DEFAULT NULL,
   PRIMARY KEY (`RUB_CODIGO`)
@@ -266,7 +258,6 @@ CREATE TABLE `cerub_rubpre` (
 
 LOCK TABLES `cerub_rubpre` WRITE;
 /*!40000 ALTER TABLE `cerub_rubpre` DISABLE KEYS */;
-INSERT INTO `cerub_rubpre` (`RUB_CODIGO`, `RUB_CATEGORIA`, `RUB_PRESUPUESTO`) VALUES (1,'Inmuebles',50000);
 /*!40000 ALTER TABLE `cerub_rubpre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,10 +269,10 @@ DROP TABLE IF EXISTS `cesol_solcom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cesol_solcom` (
-  `SOL_NUMERO` int(11) NOT NULL,
-  `EMP_ID` int(11) NOT NULL,
-  `ARE_ID` int(11) NOT NULL,
-  `RUB_CODIGO` int(11) NOT NULL,
+  `SOL_NUMERO` varchar(100) NOT NULL,
+  `EMP_ID` varchar(100) NOT NULL,
+  `ARE_ID` varchar(100) NOT NULL,
+  `RUB_CODIGO` varchar(100) NOT NULL,
   `SOL_FECHA` date DEFAULT NULL,
   `SOL_APROBACIONDIRECTORFINANCIERO` tinyint(1) DEFAULT NULL,
   `SOL_APROBACIONJEFEAREA` tinyint(1) DEFAULT NULL,
@@ -302,7 +293,6 @@ CREATE TABLE `cesol_solcom` (
 
 LOCK TABLES `cesol_solcom` WRITE;
 /*!40000 ALTER TABLE `cesol_solcom` DISABLE KEYS */;
-INSERT INTO `cesol_solcom` (`SOL_NUMERO`, `EMP_ID`, `ARE_ID`, `RUB_CODIGO`, `SOL_FECHA`, `SOL_APROBACIONDIRECTORFINANCIERO`, `SOL_APROBACIONJEFEAREA`, `SOL_TOTAL`) VALUES (1,1,1,1,'2012-12-12',1,1,25000);
 /*!40000 ALTER TABLE `cesol_solcom` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,8 +304,8 @@ DROP TABLE IF EXISTS `mebie_bienes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mebie_bienes` (
-  `BIEN_ID` int(11) NOT NULL,
-  `PRO_ID` int(11) NOT NULL,
+  `BIEN_ID` varchar(100) NOT NULL,
+  `PRO_ID` varchar(100) NOT NULL,
   `BIEN_NOMBRE` varchar(100) DEFAULT NULL,
   `BIEN_UNIDADMEDIDA` varchar(100) DEFAULT NULL,
   `BIEN_TIPO` varchar(100) DEFAULT NULL,
@@ -331,7 +321,6 @@ CREATE TABLE `mebie_bienes` (
 
 LOCK TABLES `mebie_bienes` WRITE;
 /*!40000 ALTER TABLE `mebie_bienes` DISABLE KEYS */;
-INSERT INTO `mebie_bienes` (`BIEN_ID`, `PRO_ID`, `BIEN_NOMBRE`, `BIEN_UNIDADMEDIDA`, `BIEN_TIPO`) VALUES (1,1,'Mesa','cm','Inmueble');
 /*!40000 ALTER TABLE `mebie_bienes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -343,9 +332,9 @@ DROP TABLE IF EXISTS `medet_detord`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `medet_detord` (
-  `SOL_NUMERO` int(11) NOT NULL,
-  `BIEN_ID` int(11) NOT NULL,
-  `ORD_NUMERO` int(11) NOT NULL,
+  `SOL_NUMERO` varchar(100) NOT NULL,
+  `BIEN_ID` varchar(100) NOT NULL,
+  `ORD_NUMERO` varchar(100) NOT NULL,
   PRIMARY KEY (`SOL_NUMERO`,`BIEN_ID`,`ORD_NUMERO`),
   KEY `FK_DETALLE_ORDEN2` (`ORD_NUMERO`),
   CONSTRAINT `FK_DETALLE_ORDEN` FOREIGN KEY (`SOL_NUMERO`, `BIEN_ID`) REFERENCES `ceite_itesol` (`SOL_NUMERO`, `BIEN_ID`),
@@ -359,7 +348,6 @@ CREATE TABLE `medet_detord` (
 
 LOCK TABLES `medet_detord` WRITE;
 /*!40000 ALTER TABLE `medet_detord` DISABLE KEYS */;
-INSERT INTO `medet_detord` (`SOL_NUMERO`, `BIEN_ID`, `ORD_NUMERO`) VALUES (1,1,1);
 /*!40000 ALTER TABLE `medet_detord` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +359,7 @@ DROP TABLE IF EXISTS `peare_area`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `peare_area` (
-  `ARE_ID` int(11) NOT NULL,
+  `ARE_ID` varchar(100) NOT NULL,
   `ARE_NOMBRE` varchar(100) DEFAULT NULL,
   `ARE_UBICACION` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ARE_ID`)
@@ -384,7 +372,7 @@ CREATE TABLE `peare_area` (
 
 LOCK TABLES `peare_area` WRITE;
 /*!40000 ALTER TABLE `peare_area` DISABLE KEYS */;
-INSERT INTO `peare_area` (`ARE_ID`, `ARE_NOMBRE`, `ARE_UBICACION`) VALUES (1,'Laboratorios','Centro de Datos');
+INSERT INTO `peare_area` VALUES ('1','Unidad de Admision y Registro','Edificio Central');
 /*!40000 ALTER TABLE `peare_area` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,8 +384,8 @@ DROP TABLE IF EXISTS `pecar_cargo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pecar_cargo` (
-  `CAR_ID` int(11) NOT NULL,
-  `ARE_ID` int(11) NOT NULL,
+  `CAR_ID` varchar(100) NOT NULL,
+  `ARE_ID` varchar(100) NOT NULL,
   `CAR_NOMBRE` varchar(100) NOT NULL,
   `CAR_DETALLES` varchar(500) NOT NULL,
   PRIMARY KEY (`CAR_ID`),
@@ -412,7 +400,7 @@ CREATE TABLE `pecar_cargo` (
 
 LOCK TABLES `pecar_cargo` WRITE;
 /*!40000 ALTER TABLE `pecar_cargo` DISABLE KEYS */;
-INSERT INTO `pecar_cargo` (`CAR_ID`, `ARE_ID`, `CAR_NOMBRE`, `CAR_DETALLES`) VALUES (1,1,'Jefe','Jefe del area del centro de datos');
+INSERT INTO `pecar_cargo` VALUES ('1','1','SuperAdministrador','Control total del sistema');
 /*!40000 ALTER TABLE `pecar_cargo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,9 +412,9 @@ DROP TABLE IF EXISTS `peemp_empleado`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `peemp_empleado` (
-  `EMP_ID` int(11) NOT NULL,
-  `CAR_ID` int(11) NOT NULL,
-  `EMP_CEDULA` int(11) DEFAULT NULL,
+  `EMP_ID` varchar(100) NOT NULL,
+  `CAR_ID` varchar(100) NOT NULL,
+  `EMP_CEDULA` varchar(15) DEFAULT NULL,
   `EMP_NOMBRE` varchar(100) DEFAULT NULL,
   `EMP_TELEFONO` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`EMP_ID`),
@@ -441,7 +429,7 @@ CREATE TABLE `peemp_empleado` (
 
 LOCK TABLES `peemp_empleado` WRITE;
 /*!40000 ALTER TABLE `peemp_empleado` DISABLE KEYS */;
-INSERT INTO `peemp_empleado` (`EMP_ID`, `CAR_ID`, `EMP_CEDULA`, `EMP_NOMBRE`, `EMP_TELEFONO`) VALUES (1,1,1314344985,'Febe','098518071');
+INSERT INTO `peemp_empleado` VALUES ('1','1','1314021823','Jonathan Espinosa','0985138017'),('2','1','1303639361','Mirna Mieles','099999'),('3','1','15151','dd','dd');
 /*!40000 ALTER TABLE `peemp_empleado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -456,7 +444,7 @@ CREATE TABLE `seest_estado` (
   `EST_CODIGO` char(10) NOT NULL,
   `EST_DESCRIPCION` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`EST_CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de estado, modelo lógico de seguridades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -465,7 +453,7 @@ CREATE TABLE `seest_estado` (
 
 LOCK TABLES `seest_estado` WRITE;
 /*!40000 ALTER TABLE `seest_estado` DISABLE KEYS */;
-INSERT INTO `seest_estado` (`EST_CODIGO`, `EST_DESCRIPCION`) VALUES ('1','ACTIVO'),('2','DESACTIVO');
+INSERT INTO `seest_estado` VALUES ('1','Activo');
 /*!40000 ALTER TABLE `seest_estado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,7 +471,7 @@ CREATE TABLE `seopc_opcion` (
   PRIMARY KEY (`OPC_CODIGO`),
   KEY `FK_XR_XESIS_XEOPC` (`SIS_CODIGO`),
   CONSTRAINT `FK_XR_XESIS_XEOPC` FOREIGN KEY (`SIS_CODIGO`) REFERENCES `sesis_sistem` (`SIS_CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de opción, modelo lógico de seguridades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -492,7 +480,6 @@ CREATE TABLE `seopc_opcion` (
 
 LOCK TABLES `seopc_opcion` WRITE;
 /*!40000 ALTER TABLE `seopc_opcion` DISABLE KEYS */;
-INSERT INTO `seopc_opcion` (`OPC_CODIGO`, `SIS_CODIGO`, `OPC_DESCRIPCION`) VALUES ('1','1','inicio');
 /*!40000 ALTER TABLE `seopc_opcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -512,7 +499,7 @@ CREATE TABLE `seopc_opcper` (
   KEY `FK_SEOPC_OPCPER` (`OPC_CODIGO`),
   CONSTRAINT `FK_SEOPC_OPCPER` FOREIGN KEY (`OPC_CODIGO`) REFERENCES `seopc_opcion` (`OPC_CODIGO`),
   CONSTRAINT `FK_SEOPC_OPCPER2` FOREIGN KEY (`PER_CODIGO`) REFERENCES `seper_perfil` (`PER_CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de opciones por perfil, modelo lógico de seguridades';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -521,7 +508,6 @@ CREATE TABLE `seopc_opcper` (
 
 LOCK TABLES `seopc_opcper` WRITE;
 /*!40000 ALTER TABLE `seopc_opcper` DISABLE KEYS */;
-INSERT INTO `seopc_opcper` (`PER_CODIGO`, `OPC_CODIGO`, `OPCPER_FECHAASIGNACION`, `OPCPER_ESTADO`) VALUES ('1','1','2012-12-12 00:00:00','1');
 /*!40000 ALTER TABLE `seopc_opcper` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -537,7 +523,7 @@ CREATE TABLE `seper_perfil` (
   `PER_DESCRIPCION` varchar(100) NOT NULL,
   `PER_OBSERVACION` varchar(100) NOT NULL,
   PRIMARY KEY (`PER_CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de perfil, modelo lógico de seguridades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -546,7 +532,7 @@ CREATE TABLE `seper_perfil` (
 
 LOCK TABLES `seper_perfil` WRITE;
 /*!40000 ALTER TABLE `seper_perfil` DISABLE KEYS */;
-INSERT INTO `seper_perfil` (`PER_CODIGO`, `PER_DESCRIPCION`, `PER_OBSERVACION`) VALUES ('1','Jefe','Perfil activo para aprovacion  de solicitudes');
+INSERT INTO `seper_perfil` VALUES ('1','SuperAdministrador','Control total del sistema');
 /*!40000 ALTER TABLE `seper_perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -565,7 +551,7 @@ CREATE TABLE `serol_rol` (
   `ROL_CONSULTA` char(5) NOT NULL,
   PRIMARY KEY (`PER_CODIGO`),
   CONSTRAINT `FK_XR_XEPER_XEROL` FOREIGN KEY (`PER_CODIGO`) REFERENCES `seper_perfil` (`PER_CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de rol, modelo lógico de seguridades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -574,7 +560,6 @@ CREATE TABLE `serol_rol` (
 
 LOCK TABLES `serol_rol` WRITE;
 /*!40000 ALTER TABLE `serol_rol` DISABLE KEYS */;
-INSERT INTO `serol_rol` (`PER_CODIGO`, `ROL_INSERCION`, `ROL_ACTUALIZACION`, `ROL_ELIMINACION`, `ROL_CONSULTA`) VALUES ('1','si','si','si','si');
 /*!40000 ALTER TABLE `serol_rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -592,7 +577,7 @@ CREATE TABLE `sesis_sistem` (
   PRIMARY KEY (`SIS_CODIGO`),
   KEY `FK_XR_XEEST_XESIS` (`EST_CODIGO`),
   CONSTRAINT `FK_XR_XEEST_XESIS` FOREIGN KEY (`EST_CODIGO`) REFERENCES `seest_estado` (`EST_CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de sistema, modelo lógico de seguridades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -601,7 +586,7 @@ CREATE TABLE `sesis_sistem` (
 
 LOCK TABLES `sesis_sistem` WRITE;
 /*!40000 ALTER TABLE `sesis_sistem` DISABLE KEYS */;
-INSERT INTO `sesis_sistem` (`SIS_CODIGO`, `EST_CODIGO`, `SIS_DESCRIPCION`) VALUES ('1','1','permiso otorgado');
+INSERT INTO `sesis_sistem` VALUES ('1','1','MonsterUniversity');
 /*!40000 ALTER TABLE `sesis_sistem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -613,7 +598,7 @@ DROP TABLE IF EXISTS `seusu_usaper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seusu_usaper` (
-  `EMP_ID` int(11) NOT NULL,
+  `EMP_ID` varchar(100) NOT NULL,
   `PER_CODIGO` char(10) NOT NULL,
   `USUPER_FECHAASIGNACION` date NOT NULL,
   `USUPER_FECHACAMBIO` date NOT NULL,
@@ -621,7 +606,7 @@ CREATE TABLE `seusu_usaper` (
   KEY `FK_SEUSU_USAPER` (`PER_CODIGO`),
   CONSTRAINT `FK_SEUSU_USAPER` FOREIGN KEY (`PER_CODIGO`) REFERENCES `seper_perfil` (`PER_CODIGO`),
   CONSTRAINT `FK_SEUSU_USAPER2` FOREIGN KEY (`EMP_ID`) REFERENCES `seusu_usuari` (`EMP_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de usuario por perfil, modelo lógico de seguridades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -630,7 +615,6 @@ CREATE TABLE `seusu_usaper` (
 
 LOCK TABLES `seusu_usaper` WRITE;
 /*!40000 ALTER TABLE `seusu_usaper` DISABLE KEYS */;
-INSERT INTO `seusu_usaper` (`EMP_ID`, `PER_CODIGO`, `USUPER_FECHAASIGNACION`, `USUPER_FECHACAMBIO`) VALUES (1,'1','2012-12-12','2012-12-12');
 /*!40000 ALTER TABLE `seusu_usaper` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -642,7 +626,7 @@ DROP TABLE IF EXISTS `seusu_usuari`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seusu_usuari` (
-  `EMP_ID` int(11) NOT NULL,
+  `EMP_ID` varchar(100) NOT NULL,
   `EST_CODIGO` char(10) NOT NULL,
   `USU_CONTRASENA` varchar(200) NOT NULL,
   `USU_PIEFIRMA` varchar(100) NOT NULL,
@@ -652,7 +636,7 @@ CREATE TABLE `seusu_usuari` (
   KEY `FK_XR_XEEST_XEUSU` (`EST_CODIGO`),
   CONSTRAINT `FK_XE_PEEMP_XEUSU` FOREIGN KEY (`EMP_ID`) REFERENCES `peemp_empleado` (`EMP_ID`),
   CONSTRAINT `FK_XR_XEEST_XEUSU` FOREIGN KEY (`EST_CODIGO`) REFERENCES `seest_estado` (`EST_CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de usuario, modelo lógico de seguridades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -661,7 +645,7 @@ CREATE TABLE `seusu_usuari` (
 
 LOCK TABLES `seusu_usuari` WRITE;
 /*!40000 ALTER TABLE `seusu_usuari` DISABLE KEYS */;
-INSERT INTO `seusu_usuari` (`EMP_ID`, `EST_CODIGO`, `USU_CONTRASENA`, `USU_PIEFIRMA`, `USU_FECHACREACION`, `USU_FECHAULTIMOCAMBIO`) VALUES (1,'1','1212','firma','2012-12-12 00:00:00','2012-12-12 00:00:00');
+INSERT INTO `seusu_usuari` VALUES ('1','1','8b2587f3b7aac7f2234d3a905715da402019e724378e1cc639b52d1ab246236376358aa76136947cd9d7be847ab9fd19e4cac7585ecf0a2eee6a17b5cb101fbb','Jonathan Espinosa','2012-12-12 00:00:00','2012-12-12 00:00:00'),('2','1','8b2587f3b7aac7f2234d3a905715da402019e724378e1cc639b52d1ab246236376358aa76136947cd9d7be847ab9fd19e4cac7585ecf0a2eee6a17b5cb101fbb','Mirna Mieles','0012-12-12 07:12:12','0012-12-12 07:12:12'),('3','1','dde480f96a194a0a35c887babf4f76f053659dffb7c21a3205d1c3cd5fefa6c306eb8eee723ff8ce1001147c271d24210463de668695eded3aa29b7ae47f2433','sad','0012-12-12 07:12:12','0012-12-12 07:12:12');
 /*!40000 ALTER TABLE `seusu_usuari` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -680,7 +664,7 @@ CREATE TABLE `seven_ventan` (
   PRIMARY KEY (`VEN_CODIGO`),
   KEY `FK_XR_XEOPC_XEVEN` (`OPC_CODIGO`),
   CONSTRAINT `FK_XR_XEOPC_XEVEN` FOREIGN KEY (`OPC_CODIGO`) REFERENCES `seopc_opcion` (`OPC_CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad de ventana, modelo lógico de seguridades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -689,7 +673,6 @@ CREATE TABLE `seven_ventan` (
 
 LOCK TABLES `seven_ventan` WRITE;
 /*!40000 ALTER TABLE `seven_ventan` DISABLE KEYS */;
-INSERT INTO `seven_ventan` (`VEN_CODIGO`, `OPC_CODIGO`, `VEN_DESCRIPCION`, `VEN_MENSAJE`) VALUES ('1','1','inicio','inicio');
 /*!40000 ALTER TABLE `seven_ventan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -702,4 +685,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-05  6:04:14
+-- Dump completed on 2019-05-06 21:38:37
