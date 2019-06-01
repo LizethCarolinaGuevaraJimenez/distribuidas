@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateOrdenContractualTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateOrdenContractualLabel_ordNumero}" for="ordNumero" />
+                    <h:inputText id="ordNumero" value="#{ordenContractualController.selected.ordNumero}" title="#{bundle.CreateOrdenContractualTitle_ordNumero}" required="true" requiredMessage="#{bundle.CreateOrdenContractualRequiredMessage_ordNumero}"/>
+                    <h:outputLabel value="#{bundle.CreateOrdenContractualLabel_ordFechaorden}" for="ordFechaorden" />
+                    <h:inputText id="ordFechaorden" value="#{ordenContractualController.selected.ordFechaorden}" title="#{bundle.CreateOrdenContractualTitle_ordFechaorden}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOrdenContractualLabel_ordFechaentrega}" for="ordFechaentrega" />
+                    <h:inputText id="ordFechaentrega" value="#{ordenContractualController.selected.ordFechaentrega}" title="#{bundle.CreateOrdenContractualTitle_ordFechaentrega}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOrdenContractualLabel_ordMontototal}" for="ordMontototal" />
+                    <h:inputText id="ordMontototal" value="#{ordenContractualController.selected.ordMontototal}" title="#{bundle.CreateOrdenContractualTitle_ordMontototal}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenContractualLabel_ordAprovaciondirectorfinanciero}" for="ordAprovaciondirectorfinanciero" />
+                    <h:inputText id="ordAprovaciondirectorfinanciero" value="#{ordenContractualController.selected.ordAprovaciondirectorfinanciero}" title="#{bundle.CreateOrdenContractualTitle_ordAprovaciondirectorfinanciero}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenContractualLabel_proId}" for="proId" />
+                    <h:selectOneMenu id="proId" value="#{ordenContractualController.selected.proId}" title="#{bundle.CreateOrdenContractualTitle_proId}" required="true" requiredMessage="#{bundle.CreateOrdenContractualRequiredMessage_proId}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{ordenContractualController.create}" value="#{bundle.CreateOrdenContractualSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{ordenContractualController.prepareList}" value="#{bundle.CreateOrdenContractualShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateOrdenContractualIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

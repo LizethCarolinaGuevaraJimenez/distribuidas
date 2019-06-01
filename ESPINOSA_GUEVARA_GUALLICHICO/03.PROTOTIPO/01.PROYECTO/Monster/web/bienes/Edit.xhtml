@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBienesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBienesLabel_bienId}" for="bienId" />
+                    <h:inputText id="bienId" value="#{bienesController.selected.bienId}" title="#{bundle.EditBienesTitle_bienId}" required="true" requiredMessage="#{bundle.EditBienesRequiredMessage_bienId}"/>
+                    <h:outputLabel value="#{bundle.EditBienesLabel_bienNombre}" for="bienNombre" />
+                    <h:inputText id="bienNombre" value="#{bienesController.selected.bienNombre}" title="#{bundle.EditBienesTitle_bienNombre}" />
+                    <h:outputLabel value="#{bundle.EditBienesLabel_bienUnidadmedida}" for="bienUnidadmedida" />
+                    <h:inputText id="bienUnidadmedida" value="#{bienesController.selected.bienUnidadmedida}" title="#{bundle.EditBienesTitle_bienUnidadmedida}" />
+                    <h:outputLabel value="#{bundle.EditBienesLabel_bienTipo}" for="bienTipo" />
+                    <h:inputText id="bienTipo" value="#{bienesController.selected.bienTipo}" title="#{bundle.EditBienesTitle_bienTipo}" />
+                    <h:outputLabel value="#{bundle.EditBienesLabel_proId}" for="proId" />
+                    <h:selectOneMenu id="proId" value="#{bienesController.selected.proId}" title="#{bundle.EditBienesTitle_proId}" required="true" requiredMessage="#{bundle.EditBienesRequiredMessage_proId}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{bienesController.update}" value="#{bundle.EditBienesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBienesViewLink}"/>
+                <br />
+                <h:commandLink action="#{bienesController.prepareList}" value="#{bundle.EditBienesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBienesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

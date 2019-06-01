@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOrdenContractualTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListOrdenContractualEmpty}" rendered="#{ordenContractualController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{ordenContractualController.items.rowCount > 0}">
+                    <h:outputText value="#{ordenContractualController.pagination.pageFirstItem + 1}..#{ordenContractualController.pagination.pageLastItem + 1}/#{ordenContractualController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{ordenContractualController.previous}" value="#{bundle.Previous} #{ordenContractualController.pagination.pageSize}" rendered="#{ordenContractualController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{ordenContractualController.next}" value="#{bundle.Next} #{ordenContractualController.pagination.pageSize}" rendered="#{ordenContractualController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{ordenContractualController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdenContractualTitle_ordNumero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ordNumero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdenContractualTitle_ordFechaorden}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ordFechaorden}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdenContractualTitle_ordFechaentrega}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ordFechaentrega}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdenContractualTitle_ordMontototal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ordMontototal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdenContractualTitle_ordAprovaciondirectorfinanciero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ordAprovaciondirectorfinanciero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdenContractualTitle_proId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{ordenContractualController.prepareView}" value="#{bundle.ListOrdenContractualViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ordenContractualController.prepareEdit}" value="#{bundle.ListOrdenContractualEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ordenContractualController.destroy}" value="#{bundle.ListOrdenContractualDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{ordenContractualController.prepareCreate}" value="#{bundle.ListOrdenContractualCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListOrdenContractualIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

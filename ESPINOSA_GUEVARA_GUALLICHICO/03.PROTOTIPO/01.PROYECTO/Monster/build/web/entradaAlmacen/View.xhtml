@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEntradaAlmacenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEntradaAlmacenLabel_entNumero}"/>
+                    <h:outputText value="#{entradaAlmacenController.selected.entNumero}" title="#{bundle.ViewEntradaAlmacenTitle_entNumero}"/>
+                    <h:outputText value="#{bundle.ViewEntradaAlmacenLabel_entFecha}"/>
+                    <h:outputText value="#{entradaAlmacenController.selected.entFecha}" title="#{bundle.ViewEntradaAlmacenTitle_entFecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEntradaAlmacenLabel_entNumerofactura}"/>
+                    <h:outputText value="#{entradaAlmacenController.selected.entNumerofactura}" title="#{bundle.ViewEntradaAlmacenTitle_entNumerofactura}"/>
+                    <h:outputText value="#{bundle.ViewEntradaAlmacenLabel_entTotalbienes}"/>
+                    <h:outputText value="#{entradaAlmacenController.selected.entTotalbienes}" title="#{bundle.ViewEntradaAlmacenTitle_entTotalbienes}"/>
+                    <h:outputText value="#{bundle.ViewEntradaAlmacenLabel_entValortotal}"/>
+                    <h:outputText value="#{entradaAlmacenController.selected.entValortotal}" title="#{bundle.ViewEntradaAlmacenTitle_entValortotal}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{entradaAlmacenController.destroyAndView}" value="#{bundle.ViewEntradaAlmacenDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEntradaAlmacenEditLink}"/>
+                <br />
+                <h:commandLink action="#{entradaAlmacenController.prepareCreate}" value="#{bundle.ViewEntradaAlmacenCreateLink}" />
+                <br />
+                <h:commandLink action="#{entradaAlmacenController.prepareList}" value="#{bundle.ViewEntradaAlmacenShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEntradaAlmacenIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

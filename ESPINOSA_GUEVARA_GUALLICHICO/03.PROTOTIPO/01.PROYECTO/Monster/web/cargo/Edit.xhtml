@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCargoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCargoLabel_carId}" for="carId" />
+                    <h:inputText id="carId" value="#{cargoController.selected.carId}" title="#{bundle.EditCargoTitle_carId}" required="true" requiredMessage="#{bundle.EditCargoRequiredMessage_carId}"/>
+                    <h:outputLabel value="#{bundle.EditCargoLabel_carNombre}" for="carNombre" />
+                    <h:inputText id="carNombre" value="#{cargoController.selected.carNombre}" title="#{bundle.EditCargoTitle_carNombre}" required="true" requiredMessage="#{bundle.EditCargoRequiredMessage_carNombre}"/>
+                    <h:outputLabel value="#{bundle.EditCargoLabel_carDetalles}" for="carDetalles" />
+                    <h:inputText id="carDetalles" value="#{cargoController.selected.carDetalles}" title="#{bundle.EditCargoTitle_carDetalles}" required="true" requiredMessage="#{bundle.EditCargoRequiredMessage_carDetalles}"/>
+                    <h:outputLabel value="#{bundle.EditCargoLabel_areId}" for="areId" />
+                    <h:selectOneMenu id="areId" value="#{cargoController.selected.areId}" title="#{bundle.EditCargoTitle_areId}" required="true" requiredMessage="#{bundle.EditCargoRequiredMessage_areId}">
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{cargoController.update}" value="#{bundle.EditCargoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCargoViewLink}"/>
+                <br />
+                <h:commandLink action="#{cargoController.prepareList}" value="#{bundle.EditCargoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCargoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
