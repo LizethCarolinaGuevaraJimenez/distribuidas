@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOpcionPerfilTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOpcionPerfilLabel_opcperFechaasignacion}"/>
+                    <h:outputText value="#{opcionPerfilController.selected.opcperFechaasignacion}" title="#{bundle.ViewOpcionPerfilTitle_opcperFechaasignacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOpcionPerfilLabel_opcperEstado}"/>
+                    <h:outputText value="#{opcionPerfilController.selected.opcperEstado}" title="#{bundle.ViewOpcionPerfilTitle_opcperEstado}"/>
+                    <h:outputText value="#{bundle.ViewOpcionPerfilLabel_opcion}"/>
+                    <h:outputText value="#{opcionPerfilController.selected.opcion}" title="#{bundle.ViewOpcionPerfilTitle_opcion}"/>
+                    <h:outputText value="#{bundle.ViewOpcionPerfilLabel_perfil}"/>
+                    <h:outputText value="#{opcionPerfilController.selected.perfil}" title="#{bundle.ViewOpcionPerfilTitle_perfil}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{opcionPerfilController.destroyAndView}" value="#{bundle.ViewOpcionPerfilDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOpcionPerfilEditLink}"/>
+                <br />
+                <h:commandLink action="#{opcionPerfilController.prepareCreate}" value="#{bundle.ViewOpcionPerfilCreateLink}" />
+                <br />
+                <h:commandLink action="#{opcionPerfilController.prepareList}" value="#{bundle.ViewOpcionPerfilShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOpcionPerfilIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

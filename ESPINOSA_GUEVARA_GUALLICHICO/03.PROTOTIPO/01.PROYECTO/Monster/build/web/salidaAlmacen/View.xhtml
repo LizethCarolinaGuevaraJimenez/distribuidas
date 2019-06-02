@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSalidaAlmacenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSalidaAlmacenLabel_salNumero}"/>
+                    <h:outputText value="#{salidaAlmacenController.selected.salNumero}" title="#{bundle.ViewSalidaAlmacenTitle_salNumero}"/>
+                    <h:outputText value="#{bundle.ViewSalidaAlmacenLabel_salFechasalida}"/>
+                    <h:outputText value="#{salidaAlmacenController.selected.salFechasalida}" title="#{bundle.ViewSalidaAlmacenTitle_salFechasalida}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSalidaAlmacenLabel_salFechaentrega}"/>
+                    <h:outputText value="#{salidaAlmacenController.selected.salFechaentrega}" title="#{bundle.ViewSalidaAlmacenTitle_salFechaentrega}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSalidaAlmacenLabel_empId}"/>
+                    <h:outputText value="#{salidaAlmacenController.selected.empId}" title="#{bundle.ViewSalidaAlmacenTitle_empId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{salidaAlmacenController.destroyAndView}" value="#{bundle.ViewSalidaAlmacenDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSalidaAlmacenEditLink}"/>
+                <br />
+                <h:commandLink action="#{salidaAlmacenController.prepareCreate}" value="#{bundle.ViewSalidaAlmacenCreateLink}" />
+                <br />
+                <h:commandLink action="#{salidaAlmacenController.prepareList}" value="#{bundle.ViewSalidaAlmacenShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSalidaAlmacenIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

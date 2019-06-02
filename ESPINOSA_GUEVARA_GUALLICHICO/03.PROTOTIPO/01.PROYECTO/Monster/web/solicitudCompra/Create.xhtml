@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSolicitudCompraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSolicitudCompraLabel_solNumero}" for="solNumero" />
+                    <h:inputText id="solNumero" value="#{solicitudCompraController.selected.solNumero}" title="#{bundle.CreateSolicitudCompraTitle_solNumero}" required="true" requiredMessage="#{bundle.CreateSolicitudCompraRequiredMessage_solNumero}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitudCompraLabel_solFecha}" for="solFecha" />
+                    <h:inputText id="solFecha" value="#{solicitudCompraController.selected.solFecha}" title="#{bundle.CreateSolicitudCompraTitle_solFecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSolicitudCompraLabel_solAprobaciondirectorfinanciero}" for="solAprobaciondirectorfinanciero" />
+                    <h:inputText id="solAprobaciondirectorfinanciero" value="#{solicitudCompraController.selected.solAprobaciondirectorfinanciero}" title="#{bundle.CreateSolicitudCompraTitle_solAprobaciondirectorfinanciero}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudCompraLabel_solAprobacionjefearea}" for="solAprobacionjefearea" />
+                    <h:inputText id="solAprobacionjefearea" value="#{solicitudCompraController.selected.solAprobacionjefearea}" title="#{bundle.CreateSolicitudCompraTitle_solAprobacionjefearea}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudCompraLabel_solTotal}" for="solTotal" />
+                    <h:inputText id="solTotal" value="#{solicitudCompraController.selected.solTotal}" title="#{bundle.CreateSolicitudCompraTitle_solTotal}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudCompraLabel_rubCodigo}" for="rubCodigo" />
+                    <h:selectOneMenu id="rubCodigo" value="#{solicitudCompraController.selected.rubCodigo}" title="#{bundle.CreateSolicitudCompraTitle_rubCodigo}" required="true" requiredMessage="#{bundle.CreateSolicitudCompraRequiredMessage_rubCodigo}">
+                        <f:selectItems value="#{rubroPresupuestarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudCompraLabel_areId}" for="areId" />
+                    <h:selectOneMenu id="areId" value="#{solicitudCompraController.selected.areId}" title="#{bundle.CreateSolicitudCompraTitle_areId}" required="true" requiredMessage="#{bundle.CreateSolicitudCompraRequiredMessage_areId}">
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudCompraLabel_empId}" for="empId" />
+                    <h:selectOneMenu id="empId" value="#{solicitudCompraController.selected.empId}" title="#{bundle.CreateSolicitudCompraTitle_empId}" required="true" requiredMessage="#{bundle.CreateSolicitudCompraRequiredMessage_empId}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{solicitudCompraController.create}" value="#{bundle.CreateSolicitudCompraSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{solicitudCompraController.prepareList}" value="#{bundle.CreateSolicitudCompraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSolicitudCompraIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

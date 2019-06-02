@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVentanaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVentanaEmpty}" rendered="#{ventanaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{ventanaController.items.rowCount > 0}">
+                    <h:outputText value="#{ventanaController.pagination.pageFirstItem + 1}..#{ventanaController.pagination.pageLastItem + 1}/#{ventanaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{ventanaController.previous}" value="#{bundle.Previous} #{ventanaController.pagination.pageSize}" rendered="#{ventanaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{ventanaController.next}" value="#{bundle.Next} #{ventanaController.pagination.pageSize}" rendered="#{ventanaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{ventanaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVentanaTitle_venCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.venCodigo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVentanaTitle_venDescripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.venDescripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVentanaTitle_venMensaje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.venMensaje}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVentanaTitle_opcCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opcCodigo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{ventanaController.prepareView}" value="#{bundle.ListVentanaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ventanaController.prepareEdit}" value="#{bundle.ListVentanaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ventanaController.destroy}" value="#{bundle.ListVentanaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{ventanaController.prepareCreate}" value="#{bundle.ListVentanaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVentanaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

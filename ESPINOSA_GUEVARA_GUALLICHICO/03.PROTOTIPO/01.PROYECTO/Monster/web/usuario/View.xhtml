@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="VER"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <p:panel id="panel" header="Register">
+ 
+        <p:focus context="panel"/>
+ 
+        <p:messages />
+ 
+        <h:panelGrid columns="2" cellpadding="1">
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_empId}"/>
+                    <h:outputText value="#{usuarioController.selected.empId}" title="#{bundle.ViewUsuarioTitle_empId}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_usuContrasena}"/>
+                    <h:outputText value="#{usuarioController.selected.usuContrasena}" title="#{bundle.ViewUsuarioTitle_usuContrasena}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_usuPiefirma}"/>
+                    <h:outputText value="#{usuarioController.selected.usuPiefirma}" title="#{bundle.ViewUsuarioTitle_usuPiefirma}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_usuFechacreacion}"/>
+                    <h:outputText value="#{usuarioController.selected.usuFechacreacion}" title="#{bundle.ViewUsuarioTitle_usuFechacreacion}">
+                        <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_usuFechaultimocambio}"/>
+                    <h:outputText value="#{usuarioController.selected.usuFechaultimocambio}" title="#{bundle.ViewUsuarioTitle_usuFechaultimocambio}">
+                        <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_empleado}"/>
+                    <h:outputText value="#{usuarioController.selected.empleado}" title="#{bundle.ViewUsuarioTitle_empleado}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_estCodigo}"/>
+                    <h:outputText value="#{usuarioController.selected.estCodigo}" title="#{bundle.ViewUsuarioTitle_estCodigo}"/>
+                
+          </h:panelGrid>
+ 
+        
+    </p:panel>
+        
+                 
+                <p:toolbar >
+        <f:facet name="left">
+            <h:commandButton action="#{usuarioController.prepareCreate}" value="Nuevo" />
+        </f:facet>
+         
+        <f:facet name="right">
+       <h:commandButton action="#{usuarioController.prepareList}" value="Regresar"/>
+          
+        </f:facet>
+               </p:toolbar>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
