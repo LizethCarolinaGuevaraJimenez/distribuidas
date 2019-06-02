@@ -85,7 +85,7 @@ public class ItemSalidaController implements Serializable {
         try {
             current.getItemSalidaPK().setBienId(current.getBienes().getBienId());
             current.getItemSalidaPK().setSalNumero(current.getSalidaAlmacen().getSalNumero());
-            current.getItemSalidaPK().setEmpId(current.getEmpleado().getEmpId());
+            current.getItemSalidaPK().setEmpId(current.getEmpleado().getPeempId());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ItemSalidaCreated"));
             return prepareCreate();
@@ -105,7 +105,7 @@ public class ItemSalidaController implements Serializable {
         try {
             current.getItemSalidaPK().setBienId(current.getBienes().getBienId());
             current.getItemSalidaPK().setSalNumero(current.getSalidaAlmacen().getSalNumero());
-            current.getItemSalidaPK().setEmpId(current.getEmpleado().getEmpId());
+            current.getItemSalidaPK().setEmpId(current.getEmpleado().getPeempId());
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ItemSalidaUpdated"));
             return "View";

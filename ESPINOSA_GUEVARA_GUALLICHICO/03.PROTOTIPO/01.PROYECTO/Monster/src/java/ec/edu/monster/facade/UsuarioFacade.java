@@ -5,7 +5,7 @@
  */
 package ec.edu.monster.facade;
 
-import ec.edu.monster.modelo.Empleado;
+import ec.edu.monster.modelo.PeempEmpleado;
 import ec.edu.monster.modelo.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;

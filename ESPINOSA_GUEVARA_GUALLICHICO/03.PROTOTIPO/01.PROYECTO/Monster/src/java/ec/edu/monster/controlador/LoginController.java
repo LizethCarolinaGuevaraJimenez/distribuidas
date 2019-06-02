@@ -5,7 +5,7 @@
  */
 package ec.edu.monster.controlador;
 
-import ec.edu.monster.modelo.Empleado;
+import ec.edu.monster.modelo.PeempEmpleado;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -21,18 +21,18 @@ import javax.inject.Named;
 @Named("LoginController")
 @SessionScoped
 public class LoginController implements Serializable{
-    Empleado current;
+    PeempEmpleado current;
 
     @PostConstruct
     public void init(){
-        current=new Empleado();
+        current=new PeempEmpleado();
     }
 
-    public Empleado getCurrent() {
+    public PeempEmpleado getCurrent() {
         return current;
     }
 
-    public void setCurrent(Empleado current) {
+    public void setCurrent(PeempEmpleado current) {
         this.current = current;
     }
     
@@ -41,7 +41,7 @@ public class LoginController implements Serializable{
     public void verificarSesion(){
         try {
             FacesContext context=FacesContext.getCurrentInstance();
-            current=(Empleado) context.getExternalContext().getSessionMap().get("empleado");
+            current=(PeempEmpleado) context.getExternalContext().getSessionMap().get("empleado");
             if(current == null){
                 context.getExternalContext().redirect("/../index.xhtml");
             } 

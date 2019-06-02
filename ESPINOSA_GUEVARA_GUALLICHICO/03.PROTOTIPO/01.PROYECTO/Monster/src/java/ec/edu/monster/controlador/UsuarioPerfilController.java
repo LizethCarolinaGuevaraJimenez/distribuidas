@@ -4,7 +4,7 @@ import ec.edu.monster.modelo.UsuarioPerfil;
 import ec.edu.monster.controlador.util.JsfUtil;
 import ec.edu.monster.controlador.util.PaginationHelper;
 import ec.edu.monster.facade.UsuarioPerfilFacade;
-import ec.edu.monster.modelo.Empleado;
+import ec.edu.monster.modelo.PeempEmpleado;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -54,11 +54,11 @@ public class UsuarioPerfilController implements Serializable {
         String perfil = null;
         List<UsuarioPerfil> lista = null;
         try {
-            Empleado emp = (Empleado) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("empleado");
+            PeempEmpleado emp = (PeempEmpleado) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("empleado");
             lista = ejbFacade.usuperTodos();
             if (emp != null && !lista.isEmpty()) {
                 for (UsuarioPerfil up : lista) {
-                    if (up.getUsuario().getEmpId().equals(emp.getEmpId())) {
+                    if (up.getUsuario().getEmpId().equals(emp.getPeempId())) {
                         perfil = up.getPerfil().getPerDescripcion();
                     }
                 }

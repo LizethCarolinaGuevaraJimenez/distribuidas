@@ -1,6 +1,6 @@
 package ec.edu.monster.controlador;
 
-import ec.edu.monster.modelo.Empleado;
+import ec.edu.monster.modelo.PeempEmpleado;
 import ec.edu.monster.controlador.util.JsfUtil;
 import ec.edu.monster.controlador.util.PaginationHelper;
 import ec.edu.monster.facade.EmpleadoFacade;
@@ -26,27 +26,27 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class EmpleadoController implements Serializable {
 
-    private Empleado current;
+    private PeempEmpleado current;
     private DataModel items = null;
     @EJB
     private ec.edu.monster.facade.EmpleadoFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    private List<Empleado> listaCurrent;
+    private List<PeempEmpleado> listaCurrent;
 
     public EmpleadoController() {
     }
 
     @PostConstruct
     public void init() {
-        current = new Empleado();
+        current = new PeempEmpleado();
     }
 
-    public Empleado getCurrent() {
+    public PeempEmpleado getCurrent() {
         return current;
     }
 
-    public void setCurrent(Empleado current) {
+    public void setCurrent(PeempEmpleado current) {
         this.current = current;
     }
 
@@ -117,17 +117,17 @@ public class EmpleadoController implements Serializable {
     }
 
     public String iniciarSesion(UsuarioController usu) {
-        Empleado emp;
+        PeempEmpleado emp;
         List<Usuario> lista = null;
         String redireccion = null;
         boolean ced = false;
         try {
             emp = ejbFacade.iniciarSesion(current);
             lista = usu.contrasena();
-            ced = validadorDeCedula(emp.getEmpCedula());
+            ced = validadorDeCedula(emp.getPeempCedula());
             if (emp != null && !lista.isEmpty()) {
                 for (Usuario u : lista) {
-                    if (u.getEmpId().equals(emp.getEmpId())) {
+                    if (u.getEmpId().equals(emp.getPeempId())) {
                         //cuida las sesiones del JSF
                         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("empleado", emp);
                         redireccion = "/index"; 
@@ -143,9 +143,9 @@ public class EmpleadoController implements Serializable {
         return redireccion;
     }
 
-    public Empleado getSelected() {
+    public PeempEmpleado getSelected() {
         if (current == null) {
-            current = new Empleado();
+            current = new PeempEmpleado();
             selectedItemIndex = -1;
         }
         return current;
@@ -179,20 +179,20 @@ public class EmpleadoController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Empleado) getItems().getRowData();
+        current = (PeempEmpleado) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
         current=null;
-        current = new Empleado();
+        current = new PeempEmpleado();
         selectedItemIndex = -1;
         return "Create";
     }
 
     public String create() {
-        if (validadorDeCedula(current.getEmpCedula())) {
+        if (validadorDeCedula(current.getPeempCedula())) {
             try {
                 getFacade().create(current);
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("EmpleadoCreated"));
@@ -210,13 +210,13 @@ public class EmpleadoController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Empleado) getItems().getRowData();
+        current = (PeempEmpleado) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
-        if (validadorDeCedula(current.getEmpCedula())) {
+        if (validadorDeCedula(current.getPeempApellidos())) {
             try {
 
                 getFacade().edit(current);
@@ -234,7 +234,7 @@ public class EmpleadoController implements Serializable {
     }
 
     public String destroy() {
-        current = (Empleado) getItems().getRowData();
+        current = (PeempEmpleado) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -310,7 +310,7 @@ public class EmpleadoController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
 
-    public List<Empleado> getAll() {
+    public List<PeempEmpleado> getAll() {
         return ejbFacade.findAll();
     }
 
@@ -318,11 +318,11 @@ public class EmpleadoController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Empleado getEmpleado(java.lang.String id) {
+    public PeempEmpleado getEmpleado(java.lang.String id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Empleado.class)
+    @FacesConverter(forClass = PeempEmpleado.class)
     public static class EmpleadoControllerConverter implements Converter {
 
         @Override
@@ -352,11 +352,11 @@ public class EmpleadoController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Empleado) {
-                Empleado o = (Empleado) object;
-                return getStringKey(o.getEmpId());
+            if (object instanceof PeempEmpleado) {
+                PeempEmpleado o = (PeempEmpleado) object;
+                return getStringKey(o.getPeempId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Empleado.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + PeempEmpleado.class.getName());
             }
         }
 
