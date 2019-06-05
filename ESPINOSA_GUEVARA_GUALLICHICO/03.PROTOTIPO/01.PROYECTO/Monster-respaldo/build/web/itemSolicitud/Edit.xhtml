@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditItemSolicitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditItemSolicitudLabel_itesCantidadsolicitada}" for="itesCantidadsolicitada" />
+                    <h:inputText id="itesCantidadsolicitada" value="#{itemSolicitudController.selected.itesCantidadsolicitada}" title="#{bundle.EditItemSolicitudTitle_itesCantidadsolicitada}" />
+                    <h:outputLabel value="#{bundle.EditItemSolicitudLabel_itesCantidaddespachada}" for="itesCantidaddespachada" />
+                    <h:inputText id="itesCantidaddespachada" value="#{itemSolicitudController.selected.itesCantidaddespachada}" title="#{bundle.EditItemSolicitudTitle_itesCantidaddespachada}" />
+                    <h:outputLabel value="#{bundle.EditItemSolicitudLabel_itesValortotal}" for="itesValortotal" />
+                    <h:inputText id="itesValortotal" value="#{itemSolicitudController.selected.itesValortotal}" title="#{bundle.EditItemSolicitudTitle_itesValortotal}" />
+                    <h:outputLabel value="#{bundle.EditItemSolicitudLabel_solicitudCompra}" for="solicitudCompra" />
+                    <h:selectOneMenu id="solicitudCompra" value="#{itemSolicitudController.selected.solicitudCompra}" title="#{bundle.EditItemSolicitudTitle_solicitudCompra}" required="true" requiredMessage="#{bundle.EditItemSolicitudRequiredMessage_solicitudCompra}">
+                        <f:selectItems value="#{solicitudCompraController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditItemSolicitudLabel_bienes}" for="bienes" />
+                    <h:selectOneMenu id="bienes" value="#{itemSolicitudController.selected.bienes}" title="#{bundle.EditItemSolicitudTitle_bienes}" required="true" requiredMessage="#{bundle.EditItemSolicitudRequiredMessage_bienes}">
+                        <f:selectItems value="#{bienesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{itemSolicitudController.update}" value="#{bundle.EditItemSolicitudSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditItemSolicitudViewLink}"/>
+                <br />
+                <h:commandLink action="#{itemSolicitudController.prepareList}" value="#{bundle.EditItemSolicitudShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditItemSolicitudIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

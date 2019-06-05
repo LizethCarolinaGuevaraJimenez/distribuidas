@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVentanaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVentanaLabel_venCodigo}" for="venCodigo" />
+                    <h:inputText id="venCodigo" value="#{ventanaController.selected.venCodigo}" title="#{bundle.EditVentanaTitle_venCodigo}" required="true" requiredMessage="#{bundle.EditVentanaRequiredMessage_venCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditVentanaLabel_venDescripcion}" for="venDescripcion" />
+                    <h:inputText id="venDescripcion" value="#{ventanaController.selected.venDescripcion}" title="#{bundle.EditVentanaTitle_venDescripcion}" required="true" requiredMessage="#{bundle.EditVentanaRequiredMessage_venDescripcion}"/>
+                    <h:outputLabel value="#{bundle.EditVentanaLabel_venMensaje}" for="venMensaje" />
+                    <h:inputText id="venMensaje" value="#{ventanaController.selected.venMensaje}" title="#{bundle.EditVentanaTitle_venMensaje}" required="true" requiredMessage="#{bundle.EditVentanaRequiredMessage_venMensaje}"/>
+                    <h:outputLabel value="#{bundle.EditVentanaLabel_opcCodigo}" for="opcCodigo" />
+                    <h:selectOneMenu id="opcCodigo" value="#{ventanaController.selected.opcCodigo}" title="#{bundle.EditVentanaTitle_opcCodigo}" required="true" requiredMessage="#{bundle.EditVentanaRequiredMessage_opcCodigo}">
+                        <f:selectItems value="#{opcionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{ventanaController.update}" value="#{bundle.EditVentanaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVentanaViewLink}"/>
+                <br />
+                <h:commandLink action="#{ventanaController.prepareList}" value="#{bundle.EditVentanaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVentanaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

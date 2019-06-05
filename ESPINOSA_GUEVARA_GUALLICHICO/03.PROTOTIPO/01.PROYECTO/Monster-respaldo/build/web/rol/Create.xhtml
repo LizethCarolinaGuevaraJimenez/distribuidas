@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="CREAR ROL"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form >
+    <p:panel id="panel" header="" style="margin-bottom:10px;">
+        <p:messages id="messages" />
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:outputLabel value="#{bundle.CreateRolTitle_perCodigo}" for="perCodigo" />
+                    <p:inputText id="perCodigo" value="#{rolController.selected.perCodigo}" title="#{bundle.CreateRolTitle_perCodigo}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_perCodigo}"/>
+                     <p:message for="perCodigo" />
+                    
+                    <p:outputLabel value="#{bundle.CreateRolLabel_rolInsercion}" for="rolInsercion" />
+                    <p:inputText id="rolInsercion" value="#{rolController.selected.rolInsercion}" title="#{bundle.CreateRolTitle_rolInsercion}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_rolInsercion}"/>
+                     <p:message for="rolInsercion" />
+                    
+                    <p:outputLabel value="#{bundle.CreateRolLabel_rolActualizacion}" for="rolActualizacion" />
+                    <p:inputText id="rolActualizacion" value="#{rolController.selected.rolActualizacion}" title="#{bundle.CreateRolTitle_rolActualizacion}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_rolActualizacion}"/>
+                     <p:message for="rolActualizacion" />
+                    
+                    <p:outputLabel value="#{bundle.CreateRolLabel_rolEliminacion}" for="rolEliminacion" />
+                    <p:inputText id="rolEliminacion" value="#{rolController.selected.rolEliminacion}" title="#{bundle.CreateRolTitle_rolEliminacion}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_rolEliminacion}"/>
+                    <p:message for="rolEliminacion" />
+                    
+                    <p:outputLabel value="#{bundle.CreateRolLabel_rolConsulta}" for="rolConsulta" />
+                    <p:inputText id="rolConsulta" value="#{rolController.selected.rolConsulta}" title="#{bundle.CreateRolTitle_rolConsulta}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_rolConsulta}"/>
+                    <p:message for="rolConsulta" />
+                    
+                    <p:outputLabel value="#{bundle.CreateRolLabel_perfil}" for="perfil" />
+                    <p:selectOneMenu id="perfil" value="#{rolController.selected.perfil}" title="#{bundle.CreateRolTitle_perfil}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_perfil}">
+                        <f:selectItems value="#{perfilController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                    <p:message for="perfil" />
+                    
+               </h:panelGrid>
+         
+                
+                 </p:panel>
+                 
+                  <p:toolbar>
+        <f:facet name="left">
+                 <h:commandButton action="#{rolController.create}" value="Crear"  />
+        </f:facet>
+         
+        <f:facet name="right">
+      <h:commandButton action="#{rolController.prepareList}" value="Regresar" immediate="true"/>
+          
+        </f:facet>
+    </p:toolbar>
+                 
+            </h:form>
+            
+        </ui:define>
+    </ui:composition>
+
+</html>
