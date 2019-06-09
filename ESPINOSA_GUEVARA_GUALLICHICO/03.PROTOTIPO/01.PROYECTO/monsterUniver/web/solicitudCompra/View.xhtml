@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSolicitudCompraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSolicitudCompraLabel_cesolNumero}"/>
+                    <h:outputText value="#{solicitudCompraController.selected.cesolNumero}" title="#{bundle.ViewSolicitudCompraTitle_cesolNumero}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudCompraLabel_cesolFecha}"/>
+                    <h:outputText value="#{solicitudCompraController.selected.cesolFecha}" title="#{bundle.ViewSolicitudCompraTitle_cesolFecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSolicitudCompraLabel_cesolAprovdirefinancier}"/>
+                    <h:outputText value="#{solicitudCompraController.selected.cesolAprovdirefinancier}" title="#{bundle.ViewSolicitudCompraTitle_cesolAprovdirefinancier}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudCompraLabel_cesolAprojefearea}"/>
+                    <h:outputText value="#{solicitudCompraController.selected.cesolAprojefearea}" title="#{bundle.ViewSolicitudCompraTitle_cesolAprojefearea}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudCompraLabel_cesolTotal}"/>
+                    <h:outputText value="#{solicitudCompraController.selected.cesolTotal}" title="#{bundle.ViewSolicitudCompraTitle_cesolTotal}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudCompraLabel_peareId}"/>
+                    <h:outputText value="#{solicitudCompraController.selected.peareId}" title="#{bundle.ViewSolicitudCompraTitle_peareId}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudCompraLabel_peempId}"/>
+                    <h:outputText value="#{solicitudCompraController.selected.peempId}" title="#{bundle.ViewSolicitudCompraTitle_peempId}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudCompraLabel_cerubCodigo}"/>
+                    <h:outputText value="#{solicitudCompraController.selected.cerubCodigo}" title="#{bundle.ViewSolicitudCompraTitle_cerubCodigo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{solicitudCompraController.destroyAndView}" value="#{bundle.ViewSolicitudCompraDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSolicitudCompraEditLink}"/>
+                <br />
+                <h:commandLink action="#{solicitudCompraController.prepareCreate}" value="#{bundle.ViewSolicitudCompraCreateLink}" />
+                <br />
+                <h:commandLink action="#{solicitudCompraController.prepareList}" value="#{bundle.ViewSolicitudCompraShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSolicitudCompraIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

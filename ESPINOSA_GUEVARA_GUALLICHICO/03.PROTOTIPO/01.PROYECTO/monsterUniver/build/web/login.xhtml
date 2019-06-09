@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body style="background-image: url('resources/imagenes/fondo.png') ;background-size: cover;background-repeat: no-repeat;">
+        <h:form> 
+            <h:messages showDetail="true"/> 
+            <div class="container ">
+                <div class="row justify-content-end">
+                    <div class="col-md-3 ">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <h3><b>INGRESAR</b></h3>
+                            </div>
+                            <div class="card-body">
+                                <Center>
+                                    <h:panelGrid columns="2"> 
+                                        <h:inputText id="txtCedula" value="#{usuarioController.current.seusuUsuario}" pt:placeholder="Usuario" />   
+                                        <br/>
+                                        <h:inputSecret id="txtContrasena" value="#{usuarioController.current.seusuContrasena}" pt:placeholder="Contraseña"   />
+                                    </h:panelGrid>  
+                                    <br/>
+                                    <h:commandButton  value="Iniciar Sesion" action="#{usuarioController.iniciarSesion()}" />
+                                </Center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </h:form> 
+    </h:body>
+</html>

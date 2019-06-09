@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetalleOrdenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDetalleOrdenLabel_cedetFirma}" for="cedetFirma" />
+                    <h:inputText id="cedetFirma" value="#{detalleOrdenController.selected.cedetFirma}" title="#{bundle.EditDetalleOrdenTitle_cedetFirma}" />
+                    <h:outputLabel value="#{bundle.EditDetalleOrdenLabel_itemSolicitud}" for="itemSolicitud" />
+                    <h:selectOneMenu id="itemSolicitud" value="#{detalleOrdenController.selected.itemSolicitud}" title="#{bundle.EditDetalleOrdenTitle_itemSolicitud}" required="true" requiredMessage="#{bundle.EditDetalleOrdenRequiredMessage_itemSolicitud}">
+                        <f:selectItems value="#{itemSolicitudController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleOrdenLabel_ordenContractual}" for="ordenContractual" />
+                    <h:selectOneMenu id="ordenContractual" value="#{detalleOrdenController.selected.ordenContractual}" title="#{bundle.EditDetalleOrdenTitle_ordenContractual}" required="true" requiredMessage="#{bundle.EditDetalleOrdenRequiredMessage_ordenContractual}">
+                        <f:selectItems value="#{ordenContractualController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{detalleOrdenController.update}" value="#{bundle.EditDetalleOrdenSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDetalleOrdenViewLink}"/>
+                <br />
+                <h:commandLink action="#{detalleOrdenController.prepareList}" value="#{bundle.EditDetalleOrdenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDetalleOrdenIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSalidaAlmacenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSalidaAlmacenLabel_aesalNumero}" for="aesalNumero" />
+                    <h:inputText id="aesalNumero" value="#{salidaAlmacenController.selected.aesalNumero}" title="#{bundle.CreateSalidaAlmacenTitle_aesalNumero}" required="true" requiredMessage="#{bundle.CreateSalidaAlmacenRequiredMessage_aesalNumero}"/>
+                    <h:outputLabel value="#{bundle.CreateSalidaAlmacenLabel_aesalFesalida}" for="aesalFesalida" />
+                    <h:inputText id="aesalFesalida" value="#{salidaAlmacenController.selected.aesalFesalida}" title="#{bundle.CreateSalidaAlmacenTitle_aesalFesalida}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSalidaAlmacenLabel_aesalFeentrega}" for="aesalFeentrega" />
+                    <h:inputText id="aesalFeentrega" value="#{salidaAlmacenController.selected.aesalFeentrega}" title="#{bundle.CreateSalidaAlmacenTitle_aesalFeentrega}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSalidaAlmacenLabel_peempId}" for="peempId" />
+                    <h:selectOneMenu id="peempId" value="#{salidaAlmacenController.selected.peempId}" title="#{bundle.CreateSalidaAlmacenTitle_peempId}" required="true" requiredMessage="#{bundle.CreateSalidaAlmacenRequiredMessage_peempId}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{salidaAlmacenController.create}" value="#{bundle.CreateSalidaAlmacenSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{salidaAlmacenController.prepareList}" value="#{bundle.CreateSalidaAlmacenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSalidaAlmacenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSistemaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSistemaLabel_sesisCodigo}"/>
+                    <h:outputText value="#{sistemaController.selected.sesisCodigo}" title="#{bundle.ViewSistemaTitle_sesisCodigo}"/>
+                    <h:outputText value="#{bundle.ViewSistemaLabel_sesisNombre}"/>
+                    <h:outputText value="#{sistemaController.selected.sesisNombre}" title="#{bundle.ViewSistemaTitle_sesisNombre}"/>
+                    <h:outputText value="#{bundle.ViewSistemaLabel_seestCodigo}"/>
+                    <h:outputText value="#{sistemaController.selected.seestCodigo}" title="#{bundle.ViewSistemaTitle_seestCodigo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sistemaController.destroyAndView}" value="#{bundle.ViewSistemaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSistemaEditLink}"/>
+                <br />
+                <h:commandLink action="#{sistemaController.prepareCreate}" value="#{bundle.ViewSistemaCreateLink}" />
+                <br />
+                <h:commandLink action="#{sistemaController.prepareList}" value="#{bundle.ViewSistemaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSistemaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

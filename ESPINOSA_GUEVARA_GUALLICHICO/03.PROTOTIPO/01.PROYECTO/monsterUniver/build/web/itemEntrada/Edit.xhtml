@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditItemEntradaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditItemEntradaLabel_aeiteCantentrega}" for="aeiteCantentrega" />
+                    <h:inputText id="aeiteCantentrega" value="#{itemEntradaController.selected.aeiteCantentrega}" title="#{bundle.EditItemEntradaTitle_aeiteCantentrega}" />
+                    <h:outputLabel value="#{bundle.EditItemEntradaLabel_bienes}" for="bienes" />
+                    <h:selectOneMenu id="bienes" value="#{itemEntradaController.selected.bienes}" title="#{bundle.EditItemEntradaTitle_bienes}" required="true" requiredMessage="#{bundle.EditItemEntradaRequiredMessage_bienes}">
+                        <f:selectItems value="#{bienesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditItemEntradaLabel_entradaAlmacen}" for="entradaAlmacen" />
+                    <h:selectOneMenu id="entradaAlmacen" value="#{itemEntradaController.selected.entradaAlmacen}" title="#{bundle.EditItemEntradaTitle_entradaAlmacen}" required="true" requiredMessage="#{bundle.EditItemEntradaRequiredMessage_entradaAlmacen}">
+                        <f:selectItems value="#{entradaAlmacenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{itemEntradaController.update}" value="#{bundle.EditItemEntradaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditItemEntradaViewLink}"/>
+                <br />
+                <h:commandLink action="#{itemEntradaController.prepareList}" value="#{bundle.EditItemEntradaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditItemEntradaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

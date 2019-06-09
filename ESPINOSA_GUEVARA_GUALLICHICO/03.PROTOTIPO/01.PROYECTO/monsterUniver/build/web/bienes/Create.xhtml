@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateBienesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateBienesLabel_mebieId}" for="mebieId" />
+                    <h:inputText id="mebieId" value="#{bienesController.selected.mebieId}" title="#{bundle.CreateBienesTitle_mebieId}" required="true" requiredMessage="#{bundle.CreateBienesRequiredMessage_mebieId}"/>
+                    <h:outputLabel value="#{bundle.CreateBienesLabel_mebieNombre}" for="mebieNombre" />
+                    <h:inputText id="mebieNombre" value="#{bienesController.selected.mebieNombre}" title="#{bundle.CreateBienesTitle_mebieNombre}" />
+                    <h:outputLabel value="#{bundle.CreateBienesLabel_mebieUmedida}" for="mebieUmedida" />
+                    <h:inputText id="mebieUmedida" value="#{bienesController.selected.mebieUmedida}" title="#{bundle.CreateBienesTitle_mebieUmedida}" />
+                    <h:outputLabel value="#{bundle.CreateBienesLabel_mebieTipo}" for="mebieTipo" />
+                    <h:inputText id="mebieTipo" value="#{bienesController.selected.mebieTipo}" title="#{bundle.CreateBienesTitle_mebieTipo}" />
+                    <h:outputLabel value="#{bundle.CreateBienesLabel_aeproId}" for="aeproId" />
+                    <h:selectOneMenu id="aeproId" value="#{bienesController.selected.aeproId}" title="#{bundle.CreateBienesTitle_aeproId}" required="true" requiredMessage="#{bundle.CreateBienesRequiredMessage_aeproId}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{bienesController.create}" value="#{bundle.CreateBienesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{bienesController.prepareList}" value="#{bundle.CreateBienesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateBienesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

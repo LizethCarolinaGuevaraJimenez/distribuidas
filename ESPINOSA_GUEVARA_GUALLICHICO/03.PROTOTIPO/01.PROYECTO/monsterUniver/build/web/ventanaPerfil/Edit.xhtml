@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVentanaPerfilTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVentanaPerfilLabel_sevenFechaasignacion}" for="sevenFechaasignacion" />
+                    <h:inputText id="sevenFechaasignacion" value="#{ventanaPerfilController.selected.sevenFechaasignacion}" title="#{bundle.EditVentanaPerfilTitle_sevenFechaasignacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVentanaPerfilLabel_perfil}" for="perfil" />
+                    <h:selectOneMenu id="perfil" value="#{ventanaPerfilController.selected.perfil}" title="#{bundle.EditVentanaPerfilTitle_perfil}" required="true" requiredMessage="#{bundle.EditVentanaPerfilRequiredMessage_perfil}">
+                        <f:selectItems value="#{perfilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditVentanaPerfilLabel_ventana}" for="ventana" />
+                    <h:selectOneMenu id="ventana" value="#{ventanaPerfilController.selected.ventana}" title="#{bundle.EditVentanaPerfilTitle_ventana}" required="true" requiredMessage="#{bundle.EditVentanaPerfilRequiredMessage_ventana}">
+                        <f:selectItems value="#{ventanaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{ventanaPerfilController.update}" value="#{bundle.EditVentanaPerfilSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVentanaPerfilViewLink}"/>
+                <br />
+                <h:commandLink action="#{ventanaPerfilController.prepareList}" value="#{bundle.EditVentanaPerfilShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVentanaPerfilIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

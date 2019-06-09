@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRubroPresupuestarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRubroPresupuestarioLabel_cerubCodigo}" for="cerubCodigo" />
+                    <h:inputText id="cerubCodigo" value="#{rubroPresupuestarioController.selected.cerubCodigo}" title="#{bundle.EditRubroPresupuestarioTitle_cerubCodigo}" required="true" requiredMessage="#{bundle.EditRubroPresupuestarioRequiredMessage_cerubCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditRubroPresupuestarioLabel_cerubCategoria}" for="cerubCategoria" />
+                    <h:inputText id="cerubCategoria" value="#{rubroPresupuestarioController.selected.cerubCategoria}" title="#{bundle.EditRubroPresupuestarioTitle_cerubCategoria}" />
+                    <h:outputLabel value="#{bundle.EditRubroPresupuestarioLabel_cerubPresupuesto}" for="cerubPresupuesto" />
+                    <h:inputText id="cerubPresupuesto" value="#{rubroPresupuestarioController.selected.cerubPresupuesto}" title="#{bundle.EditRubroPresupuestarioTitle_cerubPresupuesto}" />
+                </h:panelGrid>
+                <h:commandLink action="#{rubroPresupuestarioController.update}" value="#{bundle.EditRubroPresupuestarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRubroPresupuestarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{rubroPresupuestarioController.prepareList}" value="#{bundle.EditRubroPresupuestarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRubroPresupuestarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

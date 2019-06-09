@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateItemSalidaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateItemSalidaLabel_aeiteCantientr}" for="aeiteCantientr" />
+                    <h:inputText id="aeiteCantientr" value="#{itemSalidaController.selected.aeiteCantientr}" title="#{bundle.CreateItemSalidaTitle_aeiteCantientr}" />
+                    <h:outputLabel value="#{bundle.CreateItemSalidaLabel_bienes}" for="bienes" />
+                    <h:selectOneMenu id="bienes" value="#{itemSalidaController.selected.bienes}" title="#{bundle.CreateItemSalidaTitle_bienes}" required="true" requiredMessage="#{bundle.CreateItemSalidaRequiredMessage_bienes}">
+                        <f:selectItems value="#{bienesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateItemSalidaLabel_empleado}" for="empleado" />
+                    <h:selectOneMenu id="empleado" value="#{itemSalidaController.selected.empleado}" title="#{bundle.CreateItemSalidaTitle_empleado}" required="true" requiredMessage="#{bundle.CreateItemSalidaRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateItemSalidaLabel_salidaAlmacen}" for="salidaAlmacen" />
+                    <h:selectOneMenu id="salidaAlmacen" value="#{itemSalidaController.selected.salidaAlmacen}" title="#{bundle.CreateItemSalidaTitle_salidaAlmacen}" required="true" requiredMessage="#{bundle.CreateItemSalidaRequiredMessage_salidaAlmacen}">
+                        <f:selectItems value="#{salidaAlmacenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{itemSalidaController.create}" value="#{bundle.CreateItemSalidaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{itemSalidaController.prepareList}" value="#{bundle.CreateItemSalidaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateItemSalidaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

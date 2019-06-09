@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEntradaAlmacenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEntradaAlmacenEmpty}" rendered="#{entradaAlmacenController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{entradaAlmacenController.items.rowCount > 0}">
+                    <h:outputText value="#{entradaAlmacenController.pagination.pageFirstItem + 1}..#{entradaAlmacenController.pagination.pageLastItem + 1}/#{entradaAlmacenController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{entradaAlmacenController.previous}" value="#{bundle.Previous} #{entradaAlmacenController.pagination.pageSize}" rendered="#{entradaAlmacenController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{entradaAlmacenController.next}" value="#{bundle.Next} #{entradaAlmacenController.pagination.pageSize}" rendered="#{entradaAlmacenController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{entradaAlmacenController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradaAlmacenTitle_aeentNumero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aeentNumero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradaAlmacenTitle_aeentFecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aeentFecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradaAlmacenTitle_aeentNumfactura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aeentNumfactura}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradaAlmacenTitle_aeentTotalbienes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aeentTotalbienes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntradaAlmacenTitle_aeentValortot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aeentValortot}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{entradaAlmacenController.prepareView}" value="#{bundle.ListEntradaAlmacenViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{entradaAlmacenController.prepareEdit}" value="#{bundle.ListEntradaAlmacenEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{entradaAlmacenController.destroy}" value="#{bundle.ListEntradaAlmacenDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{entradaAlmacenController.prepareCreate}" value="#{bundle.ListEntradaAlmacenCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEntradaAlmacenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
