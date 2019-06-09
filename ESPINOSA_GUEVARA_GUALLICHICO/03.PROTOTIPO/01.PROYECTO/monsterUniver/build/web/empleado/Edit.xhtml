@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmpleadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_peempId}" for="peempId" />
+                    <h:inputText id="peempId" value="#{empleadoController.selected.peempId}" title="#{bundle.EditEmpleadoTitle_peempId}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_peempId}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_peempCedula}" for="peempCedula" />
+                    <h:inputText id="peempCedula" value="#{empleadoController.selected.peempCedula}" title="#{bundle.EditEmpleadoTitle_peempCedula}" />
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_peempNomres}" for="peempNomres" />
+                    <h:inputText id="peempNomres" value="#{empleadoController.selected.peempNomres}" title="#{bundle.EditEmpleadoTitle_peempNomres}" />
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_peempApellidos}" for="peempApellidos" />
+                    <h:inputText id="peempApellidos" value="#{empleadoController.selected.peempApellidos}" title="#{bundle.EditEmpleadoTitle_peempApellidos}" />
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_peempTelefono}" for="peempTelefono" />
+                    <h:inputText id="peempTelefono" value="#{empleadoController.selected.peempTelefono}" title="#{bundle.EditEmpleadoTitle_peempTelefono}" />
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_peempCorreo}" for="peempCorreo" />
+                    <h:inputText id="peempCorreo" value="#{empleadoController.selected.peempCorreo}" title="#{bundle.EditEmpleadoTitle_peempCorreo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_peempCorreo}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_pecarId}" for="pecarId" />
+                    <h:selectOneMenu id="pecarId" value="#{empleadoController.selected.pecarId}" title="#{bundle.EditEmpleadoTitle_pecarId}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_pecarId}">
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_pesexCodigo}" for="pesexCodigo" />
+                    <h:selectOneMenu id="pesexCodigo" value="#{empleadoController.selected.pesexCodigo}" title="#{bundle.EditEmpleadoTitle_pesexCodigo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_pesexCodigo}">
+                        <f:selectItems value="#{sexoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_peestCodigo}" for="peestCodigo" />
+                    <h:selectOneMenu id="peestCodigo" value="#{empleadoController.selected.peestCodigo}" title="#{bundle.EditEmpleadoTitle_peestCodigo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_peestCodigo}">
+                        <f:selectItems value="#{estadoCivilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_pedirCodigo}" for="pedirCodigo" />
+                    <h:selectOneMenu id="pedirCodigo" value="#{empleadoController.selected.pedirCodigo}" title="#{bundle.EditEmpleadoTitle_pedirCodigo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_pedirCodigo}">
+                        <f:selectItems value="#{direccionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{empleadoController.update}" value="#{bundle.EditEmpleadoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEmpleadoViewLink}"/>
+                <br />
+                <h:commandLink action="#{empleadoController.prepareList}" value="#{bundle.EditEmpleadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEmpleadoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

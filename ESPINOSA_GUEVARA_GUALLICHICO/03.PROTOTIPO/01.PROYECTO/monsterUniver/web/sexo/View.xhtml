@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSexoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSexoLabel_pesexCodigo}"/>
+                    <h:outputText value="#{sexoController.selected.pesexCodigo}" title="#{bundle.ViewSexoTitle_pesexCodigo}"/>
+                    <h:outputText value="#{bundle.ViewSexoLabel_pesexDescripcion}"/>
+                    <h:outputText value="#{sexoController.selected.pesexDescripcion}" title="#{bundle.ViewSexoTitle_pesexDescripcion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sexoController.destroyAndView}" value="#{bundle.ViewSexoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSexoEditLink}"/>
+                <br />
+                <h:commandLink action="#{sexoController.prepareCreate}" value="#{bundle.ViewSexoCreateLink}" />
+                <br />
+                <h:commandLink action="#{sexoController.prepareList}" value="#{bundle.ViewSexoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSexoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

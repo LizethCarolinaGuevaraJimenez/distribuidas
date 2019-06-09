@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProvinciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProvinciaLabel_peprovCodigo}" for="peprovCodigo" />
+                    <h:inputText id="peprovCodigo" value="#{provinciaController.selected.peprovCodigo}" title="#{bundle.CreateProvinciaTitle_peprovCodigo}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_peprovCodigo}"/>
+                    <h:outputLabel value="#{bundle.CreateProvinciaLabel_peprovNombre}" for="peprovNombre" />
+                    <h:inputText id="peprovNombre" value="#{provinciaController.selected.peprovNombre}" title="#{bundle.CreateProvinciaTitle_peprovNombre}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_peprovNombre}"/>
+                    <h:outputLabel value="#{bundle.CreateProvinciaLabel_pepaiCodigo}" for="pepaiCodigo" />
+                    <h:selectOneMenu id="pepaiCodigo" value="#{provinciaController.selected.pepaiCodigo}" title="#{bundle.CreateProvinciaTitle_pepaiCodigo}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_pepaiCodigo}">
+                        <f:selectItems value="#{paisController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{provinciaController.create}" value="#{bundle.CreateProvinciaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{provinciaController.prepareList}" value="#{bundle.CreateProvinciaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProvinciaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

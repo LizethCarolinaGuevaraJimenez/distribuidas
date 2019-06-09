@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDireccionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_pedirCodigo}" for="pedirCodigo" />
+                    <h:inputText id="pedirCodigo" value="#{direccionController.selected.pedirCodigo}" title="#{bundle.EditDireccionTitle_pedirCodigo}" required="true" requiredMessage="#{bundle.EditDireccionRequiredMessage_pedirCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_pedirNcasa}" for="pedirNcasa" />
+                    <h:inputText id="pedirNcasa" value="#{direccionController.selected.pedirNcasa}" title="#{bundle.EditDireccionTitle_pedirNcasa}" />
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_pedirCallep}" for="pedirCallep" />
+                    <h:inputText id="pedirCallep" value="#{direccionController.selected.pedirCallep}" title="#{bundle.EditDireccionTitle_pedirCallep}" />
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_pedirCalles}" for="pedirCalles" />
+                    <h:inputText id="pedirCalles" value="#{direccionController.selected.pedirCalles}" title="#{bundle.EditDireccionTitle_pedirCalles}" />
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_pedirReferencia}" for="pedirReferencia" />
+                    <h:inputText id="pedirReferencia" value="#{direccionController.selected.pedirReferencia}" title="#{bundle.EditDireccionTitle_pedirReferencia}" />
+                    <h:outputLabel value="#{bundle.EditDireccionLabel_peciuCodigo}" for="peciuCodigo" />
+                    <h:selectOneMenu id="peciuCodigo" value="#{direccionController.selected.peciuCodigo}" title="#{bundle.EditDireccionTitle_peciuCodigo}" required="true" requiredMessage="#{bundle.EditDireccionRequiredMessage_peciuCodigo}">
+                        <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{direccionController.update}" value="#{bundle.EditDireccionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDireccionViewLink}"/>
+                <br />
+                <h:commandLink action="#{direccionController.prepareList}" value="#{bundle.EditDireccionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDireccionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

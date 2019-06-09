@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_seusuUsuario}" for="seusuUsuario" />
+                    <h:inputText id="seusuUsuario" value="#{usuarioController.selected.seusuUsuario}" title="#{bundle.EditUsuarioTitle_seusuUsuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_seusuUsuario}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_seusuContrasena}" for="seusuContrasena" />
+                    <h:inputText id="seusuContrasena" value="#{usuarioController.selected.seusuContrasena}" title="#{bundle.EditUsuarioTitle_seusuContrasena}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_seusuContrasena}"/>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_seusuFechacreacion}" for="seusuFechacreacion" />
+                    <h:inputText id="seusuFechacreacion" value="#{usuarioController.selected.seusuFechacreacion}" title="#{bundle.EditUsuarioTitle_seusuFechacreacion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_seusuFechacreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_seusuFechaultimocambio}" for="seusuFechaultimocambio" />
+                    <h:inputText id="seusuFechaultimocambio" value="#{usuarioController.selected.seusuFechaultimocambio}" title="#{bundle.EditUsuarioTitle_seusuFechaultimocambio}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_seusuFechaultimocambio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_peempId}" for="peempId" />
+                    <h:selectOneMenu id="peempId" value="#{usuarioController.selected.peempId}" title="#{bundle.EditUsuarioTitle_peempId}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_peempId}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditUsuarioLabel_seestCodigo}" for="seestCodigo" />
+                    <h:selectOneMenu id="seestCodigo" value="#{usuarioController.selected.seestCodigo}" title="#{bundle.EditUsuarioTitle_seestCodigo}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_seestCodigo}">
+                        <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{usuarioController.update}" value="#{bundle.EditUsuarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUsuarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{usuarioController.prepareList}" value="#{bundle.EditUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUsuarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

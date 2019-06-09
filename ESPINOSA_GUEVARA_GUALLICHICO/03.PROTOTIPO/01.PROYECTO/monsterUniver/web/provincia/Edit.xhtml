@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProvinciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditProvinciaLabel_peprovCodigo}" for="peprovCodigo" />
+                    <h:inputText id="peprovCodigo" value="#{provinciaController.selected.peprovCodigo}" title="#{bundle.EditProvinciaTitle_peprovCodigo}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_peprovCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditProvinciaLabel_peprovNombre}" for="peprovNombre" />
+                    <h:inputText id="peprovNombre" value="#{provinciaController.selected.peprovNombre}" title="#{bundle.EditProvinciaTitle_peprovNombre}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_peprovNombre}"/>
+                    <h:outputLabel value="#{bundle.EditProvinciaLabel_pepaiCodigo}" for="pepaiCodigo" />
+                    <h:selectOneMenu id="pepaiCodigo" value="#{provinciaController.selected.pepaiCodigo}" title="#{bundle.EditProvinciaTitle_pepaiCodigo}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_pepaiCodigo}">
+                        <f:selectItems value="#{paisController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{provinciaController.update}" value="#{bundle.EditProvinciaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditProvinciaViewLink}"/>
+                <br />
+                <h:commandLink action="#{provinciaController.prepareList}" value="#{bundle.EditProvinciaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditProvinciaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

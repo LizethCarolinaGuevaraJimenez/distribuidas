@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOrdenContractualTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOrdenContractualLabel_ceordNumero}"/>
+                    <h:outputText value="#{ordenContractualController.selected.ceordNumero}" title="#{bundle.ViewOrdenContractualTitle_ceordNumero}"/>
+                    <h:outputText value="#{bundle.ViewOrdenContractualLabel_ceordFechaord}"/>
+                    <h:outputText value="#{ordenContractualController.selected.ceordFechaord}" title="#{bundle.ViewOrdenContractualTitle_ceordFechaord}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrdenContractualLabel_ceordFechentrega}"/>
+                    <h:outputText value="#{ordenContractualController.selected.ceordFechentrega}" title="#{bundle.ViewOrdenContractualTitle_ceordFechentrega}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrdenContractualLabel_ceordMontotal}"/>
+                    <h:outputText value="#{ordenContractualController.selected.ceordMontotal}" title="#{bundle.ViewOrdenContractualTitle_ceordMontotal}"/>
+                    <h:outputText value="#{bundle.ViewOrdenContractualLabel_ceordAprobdirfinanciero}"/>
+                    <h:outputText value="#{ordenContractualController.selected.ceordAprobdirfinanciero}" title="#{bundle.ViewOrdenContractualTitle_ceordAprobdirfinanciero}"/>
+                    <h:outputText value="#{bundle.ViewOrdenContractualLabel_aeproId}"/>
+                    <h:outputText value="#{ordenContractualController.selected.aeproId}" title="#{bundle.ViewOrdenContractualTitle_aeproId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{ordenContractualController.destroyAndView}" value="#{bundle.ViewOrdenContractualDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOrdenContractualEditLink}"/>
+                <br />
+                <h:commandLink action="#{ordenContractualController.prepareCreate}" value="#{bundle.ViewOrdenContractualCreateLink}" />
+                <br />
+                <h:commandLink action="#{ordenContractualController.prepareList}" value="#{bundle.ViewOrdenContractualShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOrdenContractualIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

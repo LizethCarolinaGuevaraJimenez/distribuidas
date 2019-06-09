@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEntradaAlmacenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEntradaAlmacenLabel_aeentNumero}" for="aeentNumero" />
+                    <h:inputText id="aeentNumero" value="#{entradaAlmacenController.selected.aeentNumero}" title="#{bundle.CreateEntradaAlmacenTitle_aeentNumero}" required="true" requiredMessage="#{bundle.CreateEntradaAlmacenRequiredMessage_aeentNumero}"/>
+                    <h:outputLabel value="#{bundle.CreateEntradaAlmacenLabel_aeentFecha}" for="aeentFecha" />
+                    <h:inputText id="aeentFecha" value="#{entradaAlmacenController.selected.aeentFecha}" title="#{bundle.CreateEntradaAlmacenTitle_aeentFecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEntradaAlmacenLabel_aeentNumfactura}" for="aeentNumfactura" />
+                    <h:inputText id="aeentNumfactura" value="#{entradaAlmacenController.selected.aeentNumfactura}" title="#{bundle.CreateEntradaAlmacenTitle_aeentNumfactura}" />
+                    <h:outputLabel value="#{bundle.CreateEntradaAlmacenLabel_aeentTotalbienes}" for="aeentTotalbienes" />
+                    <h:inputText id="aeentTotalbienes" value="#{entradaAlmacenController.selected.aeentTotalbienes}" title="#{bundle.CreateEntradaAlmacenTitle_aeentTotalbienes}" />
+                    <h:outputLabel value="#{bundle.CreateEntradaAlmacenLabel_aeentValortot}" for="aeentValortot" />
+                    <h:inputText id="aeentValortot" value="#{entradaAlmacenController.selected.aeentValortot}" title="#{bundle.CreateEntradaAlmacenTitle_aeentValortot}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{entradaAlmacenController.create}" value="#{bundle.CreateEntradaAlmacenSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{entradaAlmacenController.prepareList}" value="#{bundle.CreateEntradaAlmacenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEntradaAlmacenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

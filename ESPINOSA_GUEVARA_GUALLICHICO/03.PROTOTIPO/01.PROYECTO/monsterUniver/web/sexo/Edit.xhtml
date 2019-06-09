@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSexoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSexoLabel_pesexCodigo}" for="pesexCodigo" />
+                    <h:inputText id="pesexCodigo" value="#{sexoController.selected.pesexCodigo}" title="#{bundle.EditSexoTitle_pesexCodigo}" required="true" requiredMessage="#{bundle.EditSexoRequiredMessage_pesexCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditSexoLabel_pesexDescripcion}" for="pesexDescripcion" />
+                    <h:inputText id="pesexDescripcion" value="#{sexoController.selected.pesexDescripcion}" title="#{bundle.EditSexoTitle_pesexDescripcion}" required="true" requiredMessage="#{bundle.EditSexoRequiredMessage_pesexDescripcion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{sexoController.update}" value="#{bundle.EditSexoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSexoViewLink}"/>
+                <br />
+                <h:commandLink action="#{sexoController.prepareList}" value="#{bundle.EditSexoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSexoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

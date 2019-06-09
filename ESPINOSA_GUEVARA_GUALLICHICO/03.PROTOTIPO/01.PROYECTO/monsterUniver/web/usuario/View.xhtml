@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_seusuUsuario}"/>
+                    <h:outputText value="#{usuarioController.selected.seusuUsuario}" title="#{bundle.ViewUsuarioTitle_seusuUsuario}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_seusuContrasena}"/>
+                    <h:outputText value="#{usuarioController.selected.seusuContrasena}" title="#{bundle.ViewUsuarioTitle_seusuContrasena}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_seusuFechacreacion}"/>
+                    <h:outputText value="#{usuarioController.selected.seusuFechacreacion}" title="#{bundle.ViewUsuarioTitle_seusuFechacreacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_seusuFechaultimocambio}"/>
+                    <h:outputText value="#{usuarioController.selected.seusuFechaultimocambio}" title="#{bundle.ViewUsuarioTitle_seusuFechaultimocambio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_peempId}"/>
+                    <h:outputText value="#{usuarioController.selected.peempId}" title="#{bundle.ViewUsuarioTitle_peempId}"/>
+                    <h:outputText value="#{bundle.ViewUsuarioLabel_seestCodigo}"/>
+                    <h:outputText value="#{usuarioController.selected.seestCodigo}" title="#{bundle.ViewUsuarioTitle_seestCodigo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuarioController.destroyAndView}" value="#{bundle.ViewUsuarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsuarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{usuarioController.prepareCreate}" value="#{bundle.ViewUsuarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{usuarioController.prepareList}" value="#{bundle.ViewUsuarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUsuarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

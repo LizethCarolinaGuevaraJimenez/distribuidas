@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCargoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCargoLabel_pecarId}" for="pecarId" />
+                    <h:inputText id="pecarId" value="#{cargoController.selected.pecarId}" title="#{bundle.CreateCargoTitle_pecarId}" required="true" requiredMessage="#{bundle.CreateCargoRequiredMessage_pecarId}"/>
+                    <h:outputLabel value="#{bundle.CreateCargoLabel_pecarNombre}" for="pecarNombre" />
+                    <h:inputText id="pecarNombre" value="#{cargoController.selected.pecarNombre}" title="#{bundle.CreateCargoTitle_pecarNombre}" required="true" requiredMessage="#{bundle.CreateCargoRequiredMessage_pecarNombre}"/>
+                    <h:outputLabel value="#{bundle.CreateCargoLabel_pecarDetalle}" for="pecarDetalle" />
+                    <h:inputText id="pecarDetalle" value="#{cargoController.selected.pecarDetalle}" title="#{bundle.CreateCargoTitle_pecarDetalle}" required="true" requiredMessage="#{bundle.CreateCargoRequiredMessage_pecarDetalle}"/>
+                    <h:outputLabel value="#{bundle.CreateCargoLabel_peareId}" for="peareId" />
+                    <h:selectOneMenu id="peareId" value="#{cargoController.selected.peareId}" title="#{bundle.CreateCargoTitle_peareId}" required="true" requiredMessage="#{bundle.CreateCargoRequiredMessage_peareId}">
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cargoController.create}" value="#{bundle.CreateCargoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cargoController.prepareList}" value="#{bundle.CreateCargoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCargoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
